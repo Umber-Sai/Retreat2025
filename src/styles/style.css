@@ -1,0 +1,278 @@
+@font-face {
+  font-family: "OpenSans";
+  src: url("../static/fonts/OpenSans-CondBold.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "OpenSans";
+  src: url("../static/fonts/OpenSans-CondLight.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../static/fonts/Inter-Light.otf");
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #121212;
+  font-family: "OpenSans", sans-serif;
+  color: #fff;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.container {
+  max-width: 1400px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.btn {
+  width: 240px;
+  height: 70px;
+  border-radius: 35px;
+  border: 1px solid #fff;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #4580ff;
+}
+.btn.transparent {
+  background-color: transparent;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.first_section {
+  position: relative;
+  overflow: hidden;
+}
+.first_section .main_img {
+  position: absolute;
+  z-index: -1;
+  top: -246px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../static/img/main-img.JPG");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(5px);
+}
+.first_section .main_img::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: rgba(30, 2, 142, 0.3607843137);
+}
+.first_section .container .header {
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.first_section .container .header .header_lang {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -moz-column-gap: 15px;
+       column-gap: 15px;
+}
+.first_section .container .header .header_lang .lang_button {
+  width: 40px;
+  aspect-ratio: 1;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  cursor: pointer;
+  font-family: "Inter";
+  font-size: 16px;
+  color: #fff;
+}
+.first_section .container .header .header_nav {
+  display: none;
+}
+.first_section .container .header .header_burger {
+  width: 50px;
+  aspect-ratio: 1;
+  cursor: pointer;
+  padding: 12px 6px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  row-gap: 6px;
+  flex-direction: column;
+}
+.first_section .container .header .header_burger span {
+  width: 100%;
+  height: 4px;
+  background-color: #fff;
+}
+.first_section .container .main {
+  padding: 90px 0 188px;
+  text-align: center;
+}
+.first_section .container .main .main_date {
+  margin-bottom: 40px;
+}
+.first_section .container .main .main_title {
+  font-size: 50px;
+  line-height: 100%;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+.first_section .container .main .main_location {
+  font-size: 30px;
+  margin-bottom: 86px;
+}
+.first_section::after {
+  height: 100px;
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #121212 100%);
+}
+
+.about {
+  padding: 60px 0;
+}
+.about .container .about_title {
+  margin-bottom: 30px;
+}
+.about .container .about_text {
+  font-size: 25px;
+  text-transform: uppercase;
+}
+.about .container .about_text span {
+  color: #4580ff;
+}
+
+.speakers {
+  padding: 30px 0 60px;
+}
+.speakers .container .speakers_title {
+  margin-bottom: 30px;
+}
+.speakers .container .speakers_cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+.speakers .container .speakers_cards .speaker_card {
+  max-width: 400px;
+}
+.speakers .container .speakers_cards .speaker_card .card_img {
+  width: 100%;
+  aspect-ratio: 320/240;
+  margin-bottom: 15px;
+}
+.speakers .container .speakers_cards .speaker_card .card_img img {
+  width: 100%;
+}
+.speakers .container .speakers_cards .speaker_card .card_name {
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.conditions {
+  padding: 60px 0;
+}
+.conditions .container .conditions_title {
+  margin-bottom: 30px;
+}
+.conditions .container .conditions_cards {
+  display: flex;
+  gap: 35px;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+}
+.conditions .container .conditions_cards .condition_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 15px;
+}
+.conditions .container .conditions_cards .condition_card .card_svg {
+  width: 80px;
+}
+.conditions .container .conditions_cards .condition_card .card_info {
+  max-width: 400px;
+}
+.conditions .container .conditions_cards .condition_card .card_info .card_title {
+  text-transform: uppercase;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.conditions .container .conditions_active {
+  margin-top: 90px;
+  text-align: center;
+}
+
+.faq {
+  padding: 60px 0;
+}
+.faq .container .faq_title {
+  margin-bottom: 25px;
+}
+.faq .container .faq_accordion input[type=radio] {
+  position: absolute;
+  z-index: -1;
+  display: none;
+}
+.faq .container .faq_accordion input[type=radio]:checked + .accordion_section {
+  grid-template-rows: min-content 1fr;
+}
+.faq .container .faq_accordion input[type=radio]:checked + .accordion_section .section_head svg {
+  transform: rotate(180deg);
+}
+.faq .container .faq_accordion .accordion_section {
+  display: grid;
+  grid-template-rows: min-content 0fr;
+  transition: all 0.5s;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.faq .container .faq_accordion .accordion_section .section_head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 10px;
+}
+.faq .container .faq_accordion .accordion_section .section_head span {
+  font-size: 25px;
+  line-height: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.faq .container .faq_accordion .accordion_section .section_head svg {
+  transition: all 0.5s;
+}
+.faq .container .faq_accordion .accordion_section .section_body {
+  overflow: hidden;
+}/*# sourceMappingURL=style.css.map */
