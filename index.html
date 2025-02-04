@@ -14,17 +14,46 @@
     <div class="container">
       <header class="header">
         <div class="header_lang">
-          <button class="lang_button">RU</button>
-          <button class="lang_button">EN</button>
+          <input type="radio" class="press" name="language" id="Ru" checked>
+          <input type="radio" class="press" name="language" id="En">
         </div>
         <nav class="header_nav">
 
         </nav>
-        <div class="header_burger">
+        <div class="menu_burger">
+          <input type="checkbox" id="burger">
+        
           <span></span>
           <span></span>
           <span></span>
+          <span></span>
+
+          <label class="menu_popup" for="" id="menu">
+            <nav>
+              <ul>
+                <li class="press">
+                  <a href="#speakers">спикеры</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="press">
+                  <a href="#about">о ретрите</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="press">
+                  <a href="#conditions">Условия участя</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="press">
+                  <a href="#faq">Частые вопросы</a>
+                </li>
+              </ul>
+            </nav>
+          </label>
         </div>
+        
       </header>
 
       <div class="main">
@@ -39,13 +68,13 @@
         </div>
 
         <div class="main_active">
-          <button class="btn transparent">Регистрация</button>
+          <button class="btn transparent press">Регистрация</button>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="about">
+  <section class="about" id="about">
     <div class="container">
       <div class="about_title title">
         РЕТРИТ - ЭТО
@@ -57,38 +86,17 @@
     </div>
   </section>
 
-  <section class="speakers">
+  <section class="speakers" id="speakers">
     <div class="container">
       <div class="speakers_title title">Спикеры</div>
-      <div class="speakers_cards">
-        <div class="speaker_card">
-          <div class="card_img">
-            <img src="./static/img/speakers/IMG_0668 копия.png" alt="speaker">
-          </div>
-          <div class="card_name">Борис Грисенко</div>
-          <div class="card_text">Раввин Киевской Еврейской Мессианской Общины, почётный доктор теологии CLST.</div>
-        </div>
-
-        <div class="speaker_card">
-          <div class="card_img">
-            <img src="./static/img/speakers/IMG_0668 копия.png" alt="speaker">
-          </div>
-          <div class="card_name">Борис Грисенко</div>
-          <div class="card_text">Раввин Киевской Еврейской Мессианской Общины, почётный доктор теологии CLST.</div>
-        </div>
-
-        <div class="speaker_card">
-          <div class="card_img">
-            <img src="./static/img/speakers/IMG_0668 копия.png" alt="speaker">
-          </div>
-          <div class="card_name">Борис Грисенко</div>
-          <div class="card_text">Раввин Киевской Еврейской Мессианской Общины, почётный доктор теологии CLST.</div>
-        </div>
+      <div class="speakers_cards" id="speakersCards">
+     
       </div>
     </div>
   </section>
 
-  <section class="conditions">
+
+  <section class="conditions" id="conditions">
     <div class="container">
       <div class="conditions_title title">Условия участия:</div>
       <div class="conditions_cards">
@@ -194,55 +202,16 @@
       </div>
 
       <div class="conditions_active">
-        <button class="btn">Регистрация</button>
+        <button class="btn press">Регистрация</button>
       </div>
 
     </div>
   </section>
 
-  <section class="faq">
+  <section class="faq" id="faq">
     <div class="container">
       <div class="faq_title title">F.A.Q</div>
-      <div class="faq_accordion">
-
-        <input type="radio" name="accordion" id="section1">
-        <div class="accordion_section">
-          <label for="section1" class="section_head">
-            <span>Где будет проходить ретрит?</span>
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7.5 11.25L15 18.75L22.5 11.25" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>   
-          </label>
-          <div class="section_body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae voluptatibus voluptatem magnam mollitia, vero assumenda autem non esse pariatur ratione quod dolorum quidem eaque fugit adipisci illo nihil reiciendis similique!
-          </div>
-        </div>
-
-        <input type="radio" name="accordion" id="section2">
-        <div class="accordion_section">
-          <label for="section2" class="section_head">
-            <span>Как добраться на ретрит?</span>
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7.5 11.25L15 18.75L22.5 11.25" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>   
-          </label>
-          <div class="section_body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae voluptatibus voluptatem magnam mollitia, vero assumenda autem non esse pariatur ratione quod dolorum quidem eaque fugit adipisci illo nihil reiciendis similique!
-          </div>
-        </div>
-
-        <input type="radio" name="accordion" id="section3">
-        <div class="accordion_section">
-          <label for="section3" class="section_head">
-            <span>Есть ли место для парковки?</span>
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7.5 11.25L15 18.75L22.5 11.25" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>   
-          </label>
-          <div class="section_body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae voluptatibus voluptatem magnam mollitia, vero assumenda autem non esse pariatur ratione quod dolorum quidem eaque fugit adipisci illo nihil reiciendis similique!
-          </div>
-        </div>
+      <div class="faq_accordion" id="faq_accordion">
 
       </div>
     </div>

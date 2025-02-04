@@ -15,6 +15,8 @@
 * {
   padding: 0;
   margin: 0;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -50,6 +52,124 @@ body {
   font-weight: 700;
   font-size: 30px;
   text-transform: uppercase;
+}
+
+.press {
+  transform: scale(1);
+  transition: transform 0.2s ease-in;
+}
+.press:active {
+  transform: scale(0.9);
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("../static/fonts/OpenSans-CondBold.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "OpenSans";
+  src: url("../static/fonts/OpenSans-CondLight.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../static/fonts/Inter-Light.otf");
+}
+.menu_burger {
+  width: 35px;
+  height: 30px;
+  background-color: transparent;
+  position: relative;
+  z-index: 100;
+}
+
+#burger {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  z-index: 3;
+  height: 30px;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.menu_burger > span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 2px;
+  position: absolute;
+  top: 13px;
+  left: 0px;
+  z-index: 1;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.1, 1);
+}
+
+.menu_burger > span:nth-of-type(1) {
+  transform: translate(0, 10px);
+}
+
+.menu_burger > span:nth-of-type(4) {
+  transform: translate(0, -10px);
+}
+
+.menu_burger > #burger:checked ~ span:nth-of-type(1) {
+  transform: translate(-30px, 10px);
+  opacity: 0;
+}
+
+.menu_burger > #burger:checked ~ span:nth-of-type(2) {
+  transform: rotate(45deg);
+}
+
+.menu_burger > #burger:checked ~ span:nth-of-type(3) {
+  transform: rotate(-45deg);
+}
+
+.menu_burger > #burger:checked ~ span:nth-of-type(4) {
+  transform: translate(30px, -10px);
+  opacity: 0;
+}
+
+.menu_burger .menu_popup {
+  position: absolute;
+  top: -25px;
+  right: -20px;
+  width: 100vw;
+  height: 800px;
+  background-color: #121212;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  transform: translateX(100vw);
+  padding-top: 80px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 20px 20px #121212;
+}
+.menu_burger .menu_popup nav {
+  display: flex;
+  align-items: end;
+  justify-content: start;
+  flex-direction: column;
+}
+.menu_burger .menu_popup nav ul {
+  list-style: none;
+}
+.menu_burger .menu_popup nav ul a {
+  font-size: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+.menu_burger #burger:checked ~ .menu_popup {
+  opacity: 95%;
+  transform: translateX(0);
 }
 
 .first_section {
@@ -92,6 +212,38 @@ body {
   -moz-column-gap: 15px;
        column-gap: 15px;
 }
+.first_section .container .header .header_lang input {
+  width: 40px;
+  height: 0;
+  position: relative;
+}
+.first_section .container .header .header_lang input#En::before {
+  content: "En";
+}
+.first_section .container .header .header_lang input#Ru::before {
+  content: "Ru";
+}
+.first_section .container .header .header_lang input::before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  aspect-ratio: 1;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  top: -20px;
+  z-index: 101;
+  font-family: "Inter";
+  font-size: 16px;
+  color: #fff;
+}
+.first_section .container .header .header_lang input:checked::before {
+  background-color: rgba(194, 194, 194, 0.5803921569);
+}
 .first_section .container .header .header_lang .lang_button {
   width: 40px;
   aspect-ratio: 1;
@@ -105,23 +257,6 @@ body {
 }
 .first_section .container .header .header_nav {
   display: none;
-}
-.first_section .container .header .header_burger {
-  width: 50px;
-  aspect-ratio: 1;
-  cursor: pointer;
-  padding: 12px 6px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  row-gap: 6px;
-  flex-direction: column;
-}
-.first_section .container .header .header_burger span {
-  width: 100%;
-  height: 4px;
-  background-color: #fff;
 }
 .first_section .container .main {
   padding: 90px 0 188px;
@@ -185,6 +320,7 @@ body {
   width: 100%;
   aspect-ratio: 320/240;
   margin-bottom: 15px;
+  overflow: hidden;
 }
 .speakers .container .speakers_cards .speaker_card .card_img img {
   width: 100%;
@@ -272,6 +408,8 @@ body {
 }
 .faq .container .faq_accordion .accordion_section .section_head svg {
   transition: all 0.5s;
+  width: 30px;
+  flex-shrink: 0;
 }
 .faq .container .faq_accordion .accordion_section .section_body {
   overflow: hidden;

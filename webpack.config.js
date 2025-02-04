@@ -22,6 +22,7 @@ module.exports = {
       patterns: [
         { from: "src/styles", to: "styles" },
         { from: "src/static", to: "static" },
+        { from: "src/templates", to: "templates" },
       ],
     }),
     new HtmlWebpackPlugin({
