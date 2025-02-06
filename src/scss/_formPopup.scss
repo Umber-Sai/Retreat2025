@@ -1,0 +1,167 @@
+.registration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $bg-color;
+    .popup_container {
+
+        .popup_title {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .popup_form {
+            padding: 20px 0;
+
+            .form_input {
+                max-width: 100%;
+                position: relative;
+                margin: 20px 0;
+
+                input,
+                label,
+                .input_errors {
+                    transition: all .2s ease-out;
+                }
+
+                input {
+                    width: 100%;
+                    height: 60px;
+                    padding: 15px 20px;
+                    box-sizing: border-box;
+                    border: 1px solid $text-color;
+                    border-radius: 30px;
+
+                    background-color: transparent;
+                    outline: none;
+                    color: $text-color;
+                    font-size: 20px;
+                    font-family: 'OpenSans', sans-serif;
+
+                    input:-webkit-autofill,
+                    input:-webkit-autofill:focus {
+                        transition: background-color 0s 600000s, color 0s 600000s !important;
+                    }
+
+                    &:focus+label,
+                    &:not(:placeholder-shown)+label {
+                        top: -11px;
+                        left: 35px;
+                        font-size: 16px;
+
+                    }
+
+                    &#city:focus~.autocompliter {
+                        display: block;
+                    }
+
+                    &#phone {
+                        padding-left: 60px;
+
+                        &~span {
+                            position: absolute;
+                            top: 16px;
+                            left: 21px;
+                            opacity: 0;
+                            transition: all .1s;
+                        }
+
+                        &:focus~span,
+                        &:valid~span {
+                            opacity: 100;
+                        }
+                    }
+                }
+
+                label {
+                    position: absolute;
+                    top: 16px;
+                    left: 21px;
+                    background-color: $bg-color;
+                    padding: 0px 5px;
+                    border-radius: 10px;
+                }
+
+                .input_errors {
+                    position: absolute;
+                    right: 34px;
+                    bottom: -8px;
+                    color: red;
+                    padding: 0 5px;
+                    border-radius: 10px;
+                    font-size: 16px;
+                    background-color: $bg-color;
+
+                    .enter_value {
+                        display: none;
+                    }
+
+                    .change_value {
+                        display: none;
+                    }
+                }
+
+                .autocompliter {
+                    display: none;
+                    width: 100%;
+                    max-height: 300px;
+                    overflow-y: scroll;
+                    background-color: #fff;
+                    position: absolute;
+                    z-index: 3;
+                    top: 65px;
+                    left: 0px;
+                    right: 0;
+
+                    border-radius: 10px;
+
+                    color: $bg-color;
+
+                    div {
+                        padding: 10px 20px;
+                    }
+
+                    &:active {
+                        display: block;
+                    }
+                }
+
+                &.no_value {
+                    input {
+                        border-color: red;
+                    }
+
+                    label,
+                    input,
+                    span {
+                        color: red;
+                    }
+
+                    .input_errors {
+                        .enter_value {
+                            display: block;
+                        }
+                    }
+                }
+
+                &.invalid {
+                    input {
+                        border-color: red;
+                    }
+
+                    label,
+                    input,
+                    span {
+                        color: red;
+                    }
+
+                    .input_errors {
+                        .change_value {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

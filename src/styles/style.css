@@ -28,18 +28,18 @@ body {
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1000px;
   padding: 0 20px;
   margin: 0 auto;
 }
 
 .btn {
-  width: 240px;
-  height: 70px;
+  padding: 15px 40px;
+  box-sizing: border-box;
   border-radius: 35px;
   border: 1px solid #fff;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 700;
   color: #fff;
   background-color: #4580ff;
@@ -144,7 +144,7 @@ body {
   opacity: 0;
   transition: all 0.5s ease-in-out;
   transform: translateX(100vw);
-  padding-top: 80px;
+  padding-top: 200px;
   padding-right: 20px;
   box-sizing: border-box;
   box-shadow: 0px 0px 20px 20px #121212;
@@ -163,13 +163,147 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   color: #fff;
   text-decoration: none;
 }
 .menu_burger #burger:checked ~ .menu_popup {
   opacity: 95%;
   transform: translateX(0);
+}
+
+.registration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #121212;
+}
+.registration .popup_container .popup_title {
+  margin-top: 30px;
+  text-align: center;
+}
+.registration .popup_container .popup_form {
+  padding: 20px 0;
+}
+.registration .popup_container .popup_form .form_input {
+  max-width: 100%;
+  position: relative;
+  margin: 20px 0;
+}
+.registration .popup_container .popup_form .form_input input,
+.registration .popup_container .popup_form .form_input label,
+.registration .popup_container .popup_form .form_input .input_errors {
+  transition: all 0.2s ease-out;
+}
+.registration .popup_container .popup_form .form_input input {
+  width: 100%;
+  height: 60px;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+  border-radius: 30px;
+  background-color: transparent;
+  outline: none;
+  color: #fff;
+  font-size: 20px;
+  font-family: "OpenSans", sans-serif;
+}
+.registration .popup_container .popup_form .form_input input input:-webkit-autofill,
+.registration .popup_container .popup_form .form_input input input:-webkit-autofill:focus {
+  -webkit-transition: background-color 0s 600000s, color 0s 600000s !important;
+  transition: background-color 0s 600000s, color 0s 600000s !important;
+}
+.registration .popup_container .popup_form .form_input input:not(:-moz-placeholder-shown) + label {
+  top: -11px;
+  left: 35px;
+  font-size: 16px;
+}
+.registration .popup_container .popup_form .form_input input:focus + label, .registration .popup_container .popup_form .form_input input:not(:placeholder-shown) + label {
+  top: -11px;
+  left: 35px;
+  font-size: 16px;
+}
+.registration .popup_container .popup_form .form_input input#city:focus ~ .autocompliter {
+  display: block;
+}
+.registration .popup_container .popup_form .form_input input#phone {
+  padding-left: 60px;
+}
+.registration .popup_container .popup_form .form_input input#phone ~ span {
+  position: absolute;
+  top: 16px;
+  left: 21px;
+  opacity: 0;
+  transition: all 0.1s;
+}
+.registration .popup_container .popup_form .form_input input#phone:focus ~ span, .registration .popup_container .popup_form .form_input input#phone:valid ~ span {
+  opacity: 100;
+}
+.registration .popup_container .popup_form .form_input label {
+  position: absolute;
+  top: 16px;
+  left: 21px;
+  background-color: #121212;
+  padding: 0px 5px;
+  border-radius: 10px;
+}
+.registration .popup_container .popup_form .form_input .input_errors {
+  position: absolute;
+  right: 34px;
+  bottom: -8px;
+  color: red;
+  padding: 0 5px;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #121212;
+}
+.registration .popup_container .popup_form .form_input .input_errors .enter_value {
+  display: none;
+}
+.registration .popup_container .popup_form .form_input .input_errors .change_value {
+  display: none;
+}
+.registration .popup_container .popup_form .form_input .autocompliter {
+  display: none;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: scroll;
+  background-color: #fff;
+  position: absolute;
+  z-index: 3;
+  top: 65px;
+  left: 0px;
+  right: 0;
+  border-radius: 10px;
+  color: #121212;
+}
+.registration .popup_container .popup_form .form_input .autocompliter div {
+  padding: 10px 20px;
+}
+.registration .popup_container .popup_form .form_input .autocompliter:active {
+  display: block;
+}
+.registration .popup_container .popup_form .form_input.no_value input {
+  border-color: red;
+}
+.registration .popup_container .popup_form .form_input.no_value label,
+.registration .popup_container .popup_form .form_input.no_value input,
+.registration .popup_container .popup_form .form_input.no_value span {
+  color: red;
+}
+.registration .popup_container .popup_form .form_input.no_value .input_errors .enter_value {
+  display: block;
+}
+.registration .popup_container .popup_form .form_input.invalid input {
+  border-color: red;
+}
+.registration .popup_container .popup_form .form_input.invalid label,
+.registration .popup_container .popup_form .form_input.invalid input,
+.registration .popup_container .popup_form .form_input.invalid span {
+  color: red;
+}
+.registration .popup_container .popup_form .form_input.invalid .input_errors .change_value {
+  display: block;
 }
 
 .first_section {
@@ -211,11 +345,12 @@ body {
   justify-content: center;
   -moz-column-gap: 15px;
        column-gap: 15px;
+  position: relative;
+  z-index: 101;
 }
 .first_section .container .header .header_lang input {
   width: 40px;
   height: 0;
-  position: relative;
 }
 .first_section .container .header .header_lang input#En::before {
   content: "En";
@@ -236,7 +371,6 @@ body {
   transition: all 0.2s;
   position: relative;
   top: -20px;
-  z-index: 101;
   font-family: "Inter";
   font-size: 16px;
   color: #fff;

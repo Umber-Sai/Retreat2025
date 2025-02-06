@@ -1,3 +1,4 @@
+import { Form } from "./components/form";
 import { faq } from "./content/faq";
 import { speakers } from "./content/speakers";
 import { FaqType } from "./types/faq.type";
@@ -9,8 +10,9 @@ class App {
     burgerChekbox: HTMLInputElement | null = document.getElementById('burger') as HTMLInputElement;
     speakersMotherElement : HTMLElement | null = document.getElementById('speakersCards');
     faqMotherElement : HTMLElement | null = document.getElementById('faq_accordion');
-
+   
     constructor() {
+        
         document.getElementById('menu')?.addEventListener('click', () => {
             if (this.burgerChekbox) {
                 this.burgerChekbox.checked = false;
@@ -20,12 +22,18 @@ class App {
         });
 
         this.init()
+
+        new Form()
     }
 
     init() {
         this.faqFiller();
         this.speakersFiller()
     }
+
+
+  
+    
 
     async speakersFiller(): Promise<void> {
         const template : string = await this.getTemplate('./templates/speaker-card.html');
