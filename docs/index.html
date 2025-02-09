@@ -9,67 +9,63 @@
 </head>
 
 <body>
-  <section class="first_section">
+  <header class="header">
+    <div class="header_lang">
+      <input type="radio" class="press" name="language" id="Ru" checked>
+      <input type="radio" class="press" name="language" id="En">
+    </div>
+
+    <div class="menu_burger">
+      <input type="checkbox" id="burger">
+    
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+
+      <div class="menu_popup" >
+        <nav id="menu">
+          <ul>
+            <li class="press">
+              <a href="#speakers">спикеры</a>
+            </li>
+          </ul>
+          <ul>
+            <li class="press">
+              <a href="#about">о ретрите</a>
+            </li>
+          </ul>
+          <ul>
+            <li class="press">
+              <a href="#conditions">Условия участя</a>
+            </li>
+          </ul>
+          <ul>
+            <li class="press">
+              <a href="#faq">Частые вопросы</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    
+  </header>
+
+  <section class="main">
     <div class="main_img"></div>
     <div class="container">
-      <header class="header">
-        <div class="header_lang">
-          <input type="radio" class="press" name="language" id="Ru" checked>
-          <input type="radio" class="press" name="language" id="En">
-        </div>
-        <nav class="header_nav">
-
-        </nav>
-        <div class="menu_burger">
-          <input type="checkbox" id="burger">
-        
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-
-          <label class="menu_popup" for="burger" >
-            <nav id="menu">
-              <ul>
-                <li class="press">
-                  <a href="#speakers">спикеры</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="press">
-                  <a href="#about">о ретрите</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="press">
-                  <a href="#conditions">Условия участя</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="press">
-                  <a href="#faq">Частые вопросы</a>
-                </li>
-              </ul>
-            </nav>
-          </label>
-        </div>
-        
-      </header>
-
-      <div class="main">
-        <div class="main_date title">
-          22-24 мая 2025
-        </div>
-        <h1 class="main_title">
-          Молитвенный ретрит
-        </h1>
-        <div class="main_location">
-          Хайфа, Израиль
-        </div>
-
-        <div class="main_active">
-          <button class="btn transparent press">Регистрация</button>
-        </div>
+      <div class="main_date title">
+        22-24 мая 2025
+      </div>
+      <h1 class="main_title">
+        Молитвенный ретрит
+      </h1>
+      <div class="main_location">
+        Хайфа, Израиль
+      </div>
+  
+      <div class="main_active">
+        <button class="btn transparent press">Регистрация</button>
       </div>
     </div>
   </section>
@@ -274,17 +270,9 @@
         </div>
 
 
-        <!-- <select name="days" id="">
-          <option value="">22 мая</option>
-          <option value="">23 мая</option>
-          <option value="">24 мая</option>
-        </select> -->
-        <!-- <label for="">
-          Если с вами будут дети, напишите их возраст через запятую
-        </label>
-        <input type="text"> -->
 
-        <button type="button" class="btn" id="submitFormButton">Отправить</button>
+
+        <button type="button" class="btn registration_btn" id="submitFormButton">Отправить</button>
 
       </form>
     </div>

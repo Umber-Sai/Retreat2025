@@ -4,10 +4,100 @@
 @import '_formPopup.scss';
 
 
+@keyframes header-scroll {
+  to {
+    background-color: $bg-color;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    box-shadow: 0 0px 15px -10px $text-color;
+  }
+}
 
-.first_section {
+.header {
+  padding: clamp(20px, 5vw, 40px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: sticky;
+  top: 0px;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+
+  animation-name: header-scroll;
+  animation-fill-mode: both;
+  animation-timeline: scroll();
+  animation-range: 0px 200px;
+  
+
+  .header_lang {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 15px;
+    position: relative;
+    z-index: 101;
+
+    input {
+      width: 40px;
+      height: 0;
+
+      &#En::before {
+        content: 'En';
+      }
+
+      &#Ru::before {
+        content: 'Ru';
+      }
+
+      &::before {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        aspect-ratio: 1;
+        background-color: transparent;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        cursor: pointer;
+
+        transition: all .2s;
+
+        position: relative;
+        top: -20px;
+
+
+        font-family: 'Inter';
+        font-size: 16px;
+        color: $text-color
+      }
+
+      &:checked::before {
+        background-color: #c2c2c294;
+      }
+    }
+
+    .lang_button {
+      width: 40px;
+      aspect-ratio: 1;
+      background-color: transparent;
+      border-radius: 50%;
+      border: 1px solid #fff;
+      cursor: pointer;
+
+      font-family: 'Inter';
+      font-size: 16px;
+      color: $text-color
+    }
+  }
+}
+
+.main {
+  padding: 110px 0 150px;
   position: relative;
-  overflow: hidden;
+  // overflow: hidden;
+  text-align: center;
 
   .main_img {
     position: absolute;
@@ -37,96 +127,23 @@
   }
 
   .container {
-    .header {
-      padding: 20px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      .header_lang {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        column-gap: 15px;
-        position: relative;
-        z-index: 101;
-
-        input {
-          width: 40px;
-          height: 0;
-          &#En::before {
-            content: 'En';
-          }
-          &#Ru::before {
-            content: 'Ru';
-          }
-          &::before {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            aspect-ratio: 1;
-            background-color: transparent;
-            border-radius: 50%;
-            border: 1px solid #fff;
-            cursor: pointer;
-
-            transition: all .2s;
-
-            position: relative;
-            top: -20px;
-            
-
-            font-family: 'Inter';
-            font-size: 16px;
-            color: $text-color
-          }
-          &:checked::before {
-            background-color: #c2c2c294;
-          }
-        }
-
-        .lang_button {
-          width: 40px;
-          aspect-ratio: 1;
-          background-color: transparent;
-          border-radius: 50%;
-          border: 1px solid #fff;
-          cursor: pointer;
-
-          font-family: 'Inter';
-          font-size: 16px;
-          color: $text-color
-
-        }
-      }
-
-      .header_nav {
-        display: none;
-      }
+    .main_date {
+      margin-bottom: 40px;
     }
 
-    .main {
-      padding: 90px 0 188px;
-      text-align: center;
-      .main_date {
-        margin-bottom: 40px;
-      }
+    .main_title {
+      font-size: 50px;
+      line-height: 100%;
+      text-transform: uppercase;
 
-      .main_title {
-        font-size: 50px;
-        line-height: 100%;
-        text-transform: uppercase;
-
-        margin-bottom: 40px;
-      }
-
-      .main_location {
-        font-size: 30px;
-        margin-bottom: 86px;
-      }
-
+      margin-bottom: 40px;
     }
+
+    .main_location {
+      font-size: 30px;
+      margin-bottom: 86px;
+    }
+
   }
 
   &::after {
@@ -138,16 +155,18 @@
     left: 0;
     right: 0;
 
-    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, $bg-color 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, $bg-color 100%);
   }
 }
 
 .about {
   padding: 60px 0;
+
   .container {
     .about_title {
       margin-bottom: 30px;
     }
+
     .about_text {
       font-size: 25px;
       text-transform: uppercase;
@@ -162,19 +181,22 @@
 
 .speakers {
   padding: 30px 0 60px;
+
   .container {
     .speakers_title {
       margin-bottom: 30px;
     }
+
     .speakers_cards {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       gap: 50px;
       flex-wrap: wrap;
 
       .speaker_card {
-        max-width: 400px;
+        max-width: 416px;
+
         .card_img {
           width: 100%;
           aspect-ratio: 320/240;
@@ -185,6 +207,7 @@
             width: 100%;
           }
         }
+
         .card_name {
           font-size: 25px;
           font-weight: 700;
@@ -198,19 +221,21 @@
 
 .conditions {
   padding: 60px 0;
+
   .container {
     .conditions_title {
       margin-bottom: 30px;
     }
+
     .conditions_cards {
       display: flex;
       gap: 35px;
-      
+
       align-items: start;
       justify-content: start;
       flex-direction: column;
 
-      
+
 
       .condition_card {
         display: flex;
@@ -225,6 +250,7 @@
 
         .card_info {
           max-width: 400px;
+
           .card_title {
             text-transform: uppercase;
             font-size: 25px;
@@ -234,6 +260,7 @@
         }
       }
     }
+
     .conditions_active {
       margin-top: 90px;
       text-align: center;
@@ -243,16 +270,19 @@
 
 .faq {
   padding: 60px 0;
+
   .container {
     .faq_title {
       margin-bottom: 25px;
     }
+
     .faq_accordion {
       input[type='radio'] {
         position: absolute;
         z-index: -1;
         display: none;
-        &:checked + .accordion_section {
+
+        &:checked+.accordion_section {
           grid-template-rows: min-content 1fr;
 
           .section_head svg {
@@ -260,6 +290,7 @@
           }
         }
       }
+
       .accordion_section {
         display: grid;
         grid-template-rows: min-content 0fr;
@@ -289,6 +320,7 @@
             flex-shrink: 0;
           }
         }
+
         .section_body {
           overflow: hidden;
         }

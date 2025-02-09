@@ -5,7 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "npx webpack serve",
-    "build": "npx webpack"
+    "build": "npx webpack",
+    "save": "npx webpack && git add . && git commit -m \"$process.argv[2]\"",
+    "test1" : ""
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
   "devDependencies": {
     "@types/jquery": "^3.5.32",
     "copy-webpack-plugin": "^12.0.2",
+    "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
     "html-webpack-plugin": "^5.6.3",
     "ts-loader": "^9.5.2",

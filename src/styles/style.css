@@ -28,21 +28,23 @@ body {
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 950px;
   padding: 0 20px;
   margin: 0 auto;
 }
 
 .btn {
-  padding: 15px 40px;
+  padding: 20px 50px;
   box-sizing: border-box;
-  border-radius: 35px;
+  border-radius: 50px;
   border: 1px solid #fff;
   cursor: pointer;
+  font-family: "OpenSans", sans-serif;
   font-size: 30px;
   font-weight: 700;
   color: #fff;
   background-color: #4580ff;
+  text-transform: uppercase;
 }
 .btn.transparent {
   background-color: transparent;
@@ -50,7 +52,7 @@ body {
 
 .title {
   font-weight: 700;
-  font-size: 30px;
+  font-size: clamp(30px, 7vw, 60px);
   text-transform: uppercase;
 }
 
@@ -135,30 +137,35 @@ body {
 }
 
 .menu_burger .menu_popup {
-  position: absolute;
-  top: -25px;
-  right: -20px;
+  height: 110vh;
   width: 100vw;
-  height: 800px;
+  position: absolute;
+  right: clamp(-40px, -5vw, -20px);
+  top: clamp(-40px, -5vw, -20px);
+  overflow: hidden;
+  overflow: hidden;
+  pointer-events: none;
+}
+.menu_burger .menu_popup #menu {
+  width: 100vw;
+  height: 110vh;
   background-color: #121212;
-  opacity: 0;
   transition: all 0.5s ease-in-out;
-  transform: translateX(100vw);
-  padding-top: 200px;
-  padding-right: 20px;
-  box-sizing: border-box;
   box-shadow: 0px 0px 20px 20px #121212;
-}
-.menu_burger .menu_popup nav {
+  transform: translateX(calc(100vw + 40px));
+  opacity: 0;
+  padding-top: 100px;
+  padding-right: clamp(20px, 5vw, 40px);
   display: flex;
-  align-items: end;
-  justify-content: start;
   flex-direction: column;
+  justify-content: start;
+  align-items: end;
+  box-sizing: border-box;
 }
-.menu_burger .menu_popup nav ul {
+.menu_burger .menu_popup #menu ul {
   list-style: none;
 }
-.menu_burger .menu_popup nav ul a {
+.menu_burger .menu_popup #menu ul a {
   font-size: 30px;
   font-weight: 700;
   text-transform: uppercase;
@@ -168,8 +175,11 @@ body {
   text-decoration: none;
 }
 .menu_burger #burger:checked ~ .menu_popup {
+  pointer-events: auto;
+}
+.menu_burger #burger:checked ~ .menu_popup #menu {
   opacity: 95%;
-  transform: translateX(0);
+  transform: translateX(0vw);
 }
 
 .registration {
@@ -305,41 +315,35 @@ body {
 .registration .popup_container .popup_form .form_input.invalid .input_errors .change_value {
   display: block;
 }
+.registration .popup_container .popup_form .registration_btn {
+  padding: 10px 15px !important;
+  background-color: red;
+}
 
-.first_section {
-  position: relative;
-  overflow: hidden;
+@keyframes header-scroll {
+  to {
+    background-color: #121212;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    box-shadow: 0 0px 15px -10px #fff;
+  }
 }
-.first_section .main_img {
-  position: absolute;
-  z-index: -1;
-  top: -246px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("../static/img/main-img.JPG");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  filter: blur(5px);
-}
-.first_section .main_img::after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  background-color: rgba(30, 2, 142, 0.3607843137);
-}
-.first_section .container .header {
-  padding: 20px 0;
+.header {
+  padding: clamp(20px, 5vw, 40px);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  top: 0px;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  animation-name: header-scroll;
+  animation-fill-mode: both;
+  animation-timeline: scroll();
+  animation-range: 0px 200px;
 }
-.first_section .container .header .header_lang {
+.header .header_lang {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -348,17 +352,17 @@ body {
   position: relative;
   z-index: 101;
 }
-.first_section .container .header .header_lang input {
+.header .header_lang input {
   width: 40px;
   height: 0;
 }
-.first_section .container .header .header_lang input#En::before {
+.header .header_lang input#En::before {
   content: "En";
 }
-.first_section .container .header .header_lang input#Ru::before {
+.header .header_lang input#Ru::before {
   content: "Ru";
 }
-.first_section .container .header .header_lang input::before {
+.header .header_lang input::before {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -375,10 +379,10 @@ body {
   font-size: 16px;
   color: #fff;
 }
-.first_section .container .header .header_lang input:checked::before {
+.header .header_lang input:checked::before {
   background-color: rgba(194, 194, 194, 0.5803921569);
 }
-.first_section .container .header .header_lang .lang_button {
+.header .header_lang .lang_button {
   width: 40px;
   aspect-ratio: 1;
   background-color: transparent;
@@ -389,27 +393,49 @@ body {
   font-size: 16px;
   color: #fff;
 }
-.first_section .container .header .header_nav {
-  display: none;
-}
-.first_section .container .main {
-  padding: 90px 0 188px;
+
+.main {
+  padding: 110px 0 150px;
+  position: relative;
   text-align: center;
 }
-.first_section .container .main .main_date {
+.main .main_img {
+  position: absolute;
+  z-index: -1;
+  top: -246px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../static/img/main-img.JPG");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(5px);
+}
+.main .main_img::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: rgba(30, 2, 142, 0.3607843137);
+}
+.main .container .main_date {
   margin-bottom: 40px;
 }
-.first_section .container .main .main_title {
+.main .container .main_title {
   font-size: 50px;
   line-height: 100%;
   text-transform: uppercase;
   margin-bottom: 40px;
 }
-.first_section .container .main .main_location {
+.main .container .main_location {
   font-size: 30px;
   margin-bottom: 86px;
 }
-.first_section::after {
+.main::after {
   height: 100px;
   content: "";
   display: block;
@@ -443,12 +469,12 @@ body {
 .speakers .container .speakers_cards {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 50px;
   flex-wrap: wrap;
 }
 .speakers .container .speakers_cards .speaker_card {
-  max-width: 400px;
+  max-width: 416px;
 }
 .speakers .container .speakers_cards .speaker_card .card_img {
   width: 100%;
