@@ -1,0 +1,28 @@
+
+
+@media screen and (min-width : 620px) {
+    body .speakers {
+        .container {
+            .speakers_cards {
+                grid-template-columns: repeat(2, minmax(280px, 416px));
+                row-gap: clamp(20px, calc(100vw - 900px), 80px);
+                column-gap: 20px;
+                justify-content: space-between;
+                
+                .speaker_card {
+                    max-width: 416px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width : 650px) {
+    body .conditions {
+        .container {
+            .conditions_cards {
+                grid-template-columns: repeat(2, minmax(280px, 400px));
+            }
+        }
+    }
+}

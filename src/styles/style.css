@@ -320,6 +320,23 @@ body {
   background-color: red;
 }
 
+@media screen and (min-width: 620px) {
+  body .speakers .container .speakers_cards {
+    grid-template-columns: repeat(2, minmax(280px, 416px));
+    row-gap: clamp(20px, 100vw - 900px, 80px);
+    -moz-column-gap: 20px;
+         column-gap: 20px;
+    justify-content: space-between;
+  }
+  body .speakers .container .speakers_cards .speaker_card {
+    max-width: 416px;
+  }
+}
+@media screen and (min-width: 650px) {
+  body .conditions .container .conditions_cards {
+    grid-template-columns: repeat(2, minmax(280px, 400px));
+  }
+}
 @keyframes header-scroll {
   to {
     background-color: #121212;
@@ -341,7 +358,7 @@ body {
   animation-name: header-scroll;
   animation-fill-mode: both;
   animation-timeline: scroll();
-  animation-range: 0px 200px;
+  animation-range: 0px 700px;
 }
 .header .header_lang {
   display: flex;
@@ -426,34 +443,34 @@ body {
   margin-bottom: 40px;
 }
 .main .container .main_title {
-  font-size: 50px;
+  font-size: clamp(40px, 14vw - 7.6px, 120px);
   line-height: 100%;
   text-transform: uppercase;
   margin-bottom: 40px;
 }
 .main .container .main_location {
-  font-size: 30px;
+  font-size: clamp(30px, 3.5vw + 13.25px, 50px);
   margin-bottom: 86px;
-}
-.main::after {
-  height: 100px;
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #121212 100%);
 }
 
 .about {
   padding: 60px 0;
 }
+.about::before {
+  height: 100px;
+  content: "";
+  display: block;
+  position: relative;
+  top: -150px;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #121212 100%);
+}
 .about .container .about_title {
   margin-bottom: 30px;
 }
 .about .container .about_text {
-  font-size: 25px;
+  font-size: clamp(25px, 6vw, 40px);
   text-transform: uppercase;
 }
 .about .container .about_text span {
@@ -467,14 +484,12 @@ body {
   margin-bottom: 30px;
 }
 .speakers .container .speakers_cards {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 50px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 50px;
 }
 .speakers .container .speakers_cards .speaker_card {
-  max-width: 416px;
+  max-width: 580px;
 }
 .speakers .container .speakers_cards .speaker_card .card_img {
   width: 100%;
@@ -498,11 +513,10 @@ body {
   margin-bottom: 30px;
 }
 .conditions .container .conditions_cards {
-  display: flex;
-  gap: 35px;
-  align-items: start;
-  justify-content: start;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: space-between;
+  gap: 50px;
 }
 .conditions .container .conditions_cards .condition_card {
   display: flex;
@@ -512,7 +526,12 @@ body {
   gap: 15px;
 }
 .conditions .container .conditions_cards .condition_card .card_svg {
-  width: 80px;
+  width: clamp(80px, 33.3333333333% - 13.3333333333px, 120px);
+  aspect-ratio: 1;
+}
+.conditions .container .conditions_cards .condition_card .card_svg svg {
+  width: 100%;
+  aspect-ratio: 1;
 }
 .conditions .container .conditions_cards .condition_card .card_info {
   max-width: 400px;

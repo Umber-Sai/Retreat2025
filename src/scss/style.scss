@@ -2,6 +2,7 @@
 @import '_fonts.scss';
 @import '_burger.scss';
 @import '_formPopup.scss';
+@import '_adaptive.scss';
 
 
 @keyframes header-scroll {
@@ -28,7 +29,7 @@
   animation-name: header-scroll;
   animation-fill-mode: both;
   animation-timeline: scroll();
-  animation-range: 0px 200px;
+  animation-range: 0px 700px;
   
 
   .header_lang {
@@ -132,7 +133,7 @@
     }
 
     .main_title {
-      font-size: 50px;
+      font-size: clamp(40px, calc(14vw - 7.6px), 120px);
       line-height: 100%;
       text-transform: uppercase;
 
@@ -140,27 +141,29 @@
     }
 
     .main_location {
-      font-size: 30px;
+      font-size: clamp(30px, calc(3.5vw + 13.25px), 50px);
       margin-bottom: 86px;
     }
 
   }
+}
 
-  &::after {
+
+.about {
+  padding: 60px 0;
+
+
+  &::before {
     height: 100px;
     content: '';
     display: block;
-    position: absolute;
-    bottom: 0;
+    position: relative;
+    top: -150px;
     left: 0;
     right: 0;
 
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, $bg-color 100%);
   }
-}
-
-.about {
-  padding: 60px 0;
 
   .container {
     .about_title {
@@ -168,7 +171,7 @@
     }
 
     .about_text {
-      font-size: 25px;
+      font-size: clamp(25px, 6vw, 40px);
       text-transform: uppercase;
 
       span {
@@ -188,14 +191,12 @@
     }
 
     .speakers_cards {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 50px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 50px;
 
       .speaker_card {
-        max-width: 416px;
+        max-width: 580px;
 
         .card_img {
           width: 100%;
@@ -228,15 +229,10 @@
     }
 
     .conditions_cards {
-      display: flex;
-      gap: 35px;
-
-      align-items: start;
-      justify-content: start;
-      flex-direction: column;
-
-
-
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-content: space-between;
+      gap: 50px;
       .condition_card {
         display: flex;
         flex-direction: column;
@@ -245,7 +241,12 @@
         gap: 15px;
 
         .card_svg {
-          width: 80px;
+          width: clamp(80px, calc(100% / 3 - 40px / 3), 120px);
+          aspect-ratio: 1;
+          svg {
+            width: 100%;
+            aspect-ratio: 1;
+          }
         }
 
         .card_info {
