@@ -324,6 +324,18 @@
 
         .section_body {
           overflow: hidden;
+
+          a {
+            color: $second-color;
+            text-decoration: none;
+
+            &::after {
+              content: '\2192';
+              display: inline-block;
+              margin-left: 5px;
+
+            }
+          }
         }
       }
     }

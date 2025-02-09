@@ -1,8 +1,8 @@
 import { Form } from "./components/form";
-import { faq } from "./content/faq";
 import { speakers } from "./content/speakers";
 import { FaqType } from "./types/faq.type";
 import { SpeakersType } from "./types/speakers.type";
+import faq from './content/faq.json';
 
 class App {
 
@@ -57,7 +57,7 @@ class App {
 
     async faqFiller(): Promise<void> {
         const template : string = await this.getTemplate('./templates/accordion.html');
-        faq.forEach((element: FaqType) => {
+        faq.faq.forEach((element: FaqType) => {
             const section: HTMLElement = document.createElement('div');
             section.innerHTML = template;
 
@@ -70,7 +70,7 @@ class App {
             }
             const body: HTMLElement | null = section.querySelector('.section_body');
             if (body) {
-                body.innerText = element[this.language].body;
+                body.innerHTML = element[this.language].body;
             }
             this.faqMotherElement?.appendChild(section) 
         });

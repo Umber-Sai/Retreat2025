@@ -1,9 +1,4 @@
-export type FaqType1 =
-    {
-        id: number
-        head: string,
-        body: string
-    }
+
 
     export type FaqType =
     {
@@ -16,6 +11,7 @@ export type FaqType1 =
             head: string,
             body: string
         }
+        link? : string
     }
 
 

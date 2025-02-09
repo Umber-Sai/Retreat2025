@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "OpenSans";
   src: url("../static/fonts/OpenSans-CondBold.ttf");
@@ -592,4 +593,13 @@ body {
 }
 .faq .container .faq_accordion .accordion_section .section_body {
   overflow: hidden;
+}
+.faq .container .faq_accordion .accordion_section .section_body a {
+  color: #4580ff;
+  text-decoration: none;
+}
+.faq .container .faq_accordion .accordion_section .section_body a::after {
+  content: "→";
+  display: inline-block;
+  margin-left: 5px;
 }/*# sourceMappingURL=style.css.map */
