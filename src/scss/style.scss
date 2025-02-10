@@ -318,3 +318,20 @@
     }
   }
 }
+
+.footer {
+  padding: 20px 30px;
+  border-top: 1px solid $text-color;
+
+  font-size: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+
+  .footer_block {
+    min-width: 190px;
+  }
+}

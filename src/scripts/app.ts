@@ -3,22 +3,9 @@ import { speakers } from "./content/speakers";
 import { FaqType } from "./types/faq.type";
 import { SpeakersType } from "./types/speakers.type";
 import faq from './content/faq.json';
+import { Header } from "./components/header";
 
-const header : HTMLElement | null = document.querySelector('.header');
 
-const handleScroll = () => {
-  const scrollY = window.scrollY;
-  const maxScroll = 800; // Граница анимации
-
-  let progress = Math.min(scrollY / maxScroll, 1).toFixed(3);
-  console.log(`rgba(0, 0, 0, ${progress})`)
-
-  // Изменяем только прозрачность фона
-  header!.style.backgroundColor = `rgba(18, 18, 18, ${progress})`;
-  header!.style.boxShadow = `0 0px 15px -10px rgba(255, 255, 255, ${progress})`;
-};
-
-window.addEventListener('scroll', () => requestAnimationFrame(handleScroll));
 
 class App {
 
@@ -37,9 +24,11 @@ class App {
             }
         });
 
-        this.init()
-
+        
+        new Header()
         new Form()
+        
+        this.init()
     }
 
     init() {
