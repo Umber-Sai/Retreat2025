@@ -7,10 +7,8 @@
 
 @keyframes header-scroll {
   to {
-    background-color: $bg-color;
     padding-top: 15px;
     padding-bottom: 15px;
-    box-shadow: 0 0px 15px -10px $text-color;
   }
 }
 
@@ -25,6 +23,8 @@
   right: 0;
   left: 0;
   z-index: 1000;
+
+  // background-color: rgba(0, 0, 0, 0.038);
 
   animation-name: header-scroll;
   animation-fill-mode: both;
@@ -41,52 +41,29 @@
     z-index: 101;
 
     input {
-      width: 40px;
-      height: 0;
+      display: none;
+      position: relative;
+      z-index: -100;
 
-      &#En::before {
-        content: 'En';
-      }
-
-      &#Ru::before {
-        content: 'Ru';
-      }
-
-      &::before {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        aspect-ratio: 1;
-        background-color: transparent;
-        border-radius: 50%;
-        border: 1px solid #fff;
-        cursor: pointer;
-
-        transition: all .2s;
-
-        position: relative;
-        top: -20px;
-
-
-        font-family: 'Inter';
-        font-size: 16px;
-        color: $text-color
-      }
-
-      &:checked::before {
+      &:checked + label {
         background-color: #c2c2c294;
       }
     }
 
-    .lang_button {
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 40px;
       aspect-ratio: 1;
       background-color: transparent;
       border-radius: 50%;
       border: 1px solid #fff;
       cursor: pointer;
-
+ 
+      transition: all .2s;
+ 
+ 
       font-family: 'Inter';
       font-size: 16px;
       color: $text-color

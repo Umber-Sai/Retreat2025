@@ -340,10 +340,8 @@ body {
 }
 @keyframes header-scroll {
   to {
-    background-color: #121212;
     padding-top: 15px;
     padding-bottom: 15px;
-    box-shadow: 0 0px 15px -10px #fff;
   }
 }
 .header {
@@ -371,16 +369,14 @@ body {
   z-index: 101;
 }
 .header .header_lang input {
-  width: 40px;
-  height: 0;
+  display: none;
+  position: relative;
+  z-index: -100;
 }
-.header .header_lang input#En::before {
-  content: "En";
+.header .header_lang input:checked + label {
+  background-color: rgba(194, 194, 194, 0.5803921569);
 }
-.header .header_lang input#Ru::before {
-  content: "Ru";
-}
-.header .header_lang input::before {
+.header .header_lang label {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -391,22 +387,6 @@ body {
   border: 1px solid #fff;
   cursor: pointer;
   transition: all 0.2s;
-  position: relative;
-  top: -20px;
-  font-family: "Inter";
-  font-size: 16px;
-  color: #fff;
-}
-.header .header_lang input:checked::before {
-  background-color: rgba(194, 194, 194, 0.5803921569);
-}
-.header .header_lang .lang_button {
-  width: 40px;
-  aspect-ratio: 1;
-  background-color: transparent;
-  border-radius: 50%;
-  border: 1px solid #fff;
-  cursor: pointer;
   font-family: "Inter";
   font-size: 16px;
   color: #fff;
