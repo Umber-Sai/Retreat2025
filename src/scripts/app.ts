@@ -10,19 +10,12 @@ import { Header } from "./components/header";
 class App {
 
     language : 'Ru' | 'En' = 'Ru';
-    burgerChekbox: HTMLInputElement | null = document.getElementById('burger') as HTMLInputElement;
     speakersMotherElement : HTMLElement | null = document.getElementById('speakersCards');
     faqMotherElement : HTMLElement | null = document.getElementById('faq_accordion');
    
     constructor() {
         
-        document.getElementById('menu')?.addEventListener('click', () => {
-            if (this.burgerChekbox) {
-                this.burgerChekbox.checked = false;
-            } else {
-                console.error('burgerChekbox not found')
-            }
-        });
+      
 
         
         new Header()

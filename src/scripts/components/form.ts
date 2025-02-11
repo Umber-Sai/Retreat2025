@@ -9,6 +9,7 @@ export class Form {
     submitFormButton: HTMLElement | null = document.getElementById('submitFormButton');
 
     constructor() {
+
         if(this.popup) {
             this.popup.onclick = (e) => {
                 (e.target as HTMLElement).classList.add('hide')

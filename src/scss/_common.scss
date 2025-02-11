@@ -2,7 +2,7 @@
 
 $text-color: #fff;
 $bg-color: #121212;
-$second-color: #4580ff;
+$second-color: #EEAF00;
 
 * {
     padding: 0;
@@ -39,12 +39,14 @@ body {
     background-color: $second-color;
 
     text-transform: uppercase;
+    background-color: transparent;
 
 
-
-    &.transparent {
-        background-color: transparent;
+    &:hover {
+        background-color: $second-color;
+        border-color: $second-color;
     }
+
 }
 
 .title {

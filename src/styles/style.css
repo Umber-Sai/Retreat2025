@@ -44,11 +44,13 @@ body {
   font-size: 30px;
   font-weight: 700;
   color: #fff;
-  background-color: #4580ff;
+  background-color: #EEAF00;
   text-transform: uppercase;
-}
-.btn.transparent {
   background-color: transparent;
+}
+.btn:hover {
+  background-color: #EEAF00;
+  border-color: #EEAF00;
 }
 
 .title {
@@ -140,10 +142,11 @@ body {
 .menu_burger .menu_popup {
   height: 110vh;
   width: 100vw;
-  position: absolute;
-  right: clamp(-40px, -5vw, -20px);
-  top: clamp(-40px, -5vw, -20px);
-  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   overflow: hidden;
   pointer-events: none;
 }
@@ -175,6 +178,14 @@ body {
   color: #fff;
   text-decoration: none;
 }
+.menu_burger .menu_popup #menu .menu_addition a {
+  cursor: pointer;
+  font-family: "OpenSans", sans-serif;
+  color: #fff;
+  font-weight: 300;
+  font-size: 20px;
+  text-decoration: none;
+}
 .menu_burger #burger:checked ~ .menu_popup {
   pointer-events: auto;
 }
@@ -183,6 +194,15 @@ body {
   transform: translateX(0vw);
 }
 
+@media screen and (min-width: 750px) {
+  .menu_burger .menu_popup #menu {
+    width: 300px;
+  }
+  .menu_burger #burger:checked ~ .menu_popup #menu {
+    opacity: 95%;
+    transform: translateX(calc(100vw - 300px));
+  }
+}
 .registration {
   display: flex;
   align-items: center;
@@ -349,7 +369,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: sticky;
+  position: fixed;
   top: 0px;
   right: 0;
   left: 0;
@@ -393,7 +413,7 @@ body {
 }
 
 .main {
-  padding: 110px 0 150px;
+  padding: 190px 0 150px;
   position: relative;
   text-align: center;
 }
@@ -435,14 +455,15 @@ body {
 }
 
 .about {
-  padding: 60px 0;
+  padding: 30px 0 60px;
+  position: relative;
 }
 .about::before {
   height: 100px;
   content: "";
   display: block;
-  position: relative;
-  top: -150px;
+  position: absolute;
+  top: -90px;
   left: 0;
   right: 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #121212 100%);
@@ -455,7 +476,7 @@ body {
   text-transform: uppercase;
 }
 .about .container .about_text span {
-  color: #4580ff;
+  color: #EEAF00;
 }
 
 .speakers {
@@ -513,6 +534,9 @@ body {
 .conditions .container .conditions_cards .condition_card .card_svg svg {
   width: 100%;
   aspect-ratio: 1;
+}
+.conditions .container .conditions_cards .condition_card .card_svg svg path {
+  fill: #EEAF00;
 }
 .conditions .container .conditions_cards .condition_card .card_info {
   max-width: 400px;
@@ -575,7 +599,7 @@ body {
   overflow: hidden;
 }
 .faq .container .faq_accordion .accordion_section .section_body a {
-  color: #4580ff;
+  color: #EEAF00;
   text-decoration: none;
 }
 .faq .container .faq_accordion .accordion_section .section_body a::after {
@@ -596,4 +620,12 @@ body {
 }
 .footer .footer_block {
   min-width: 190px;
+}
+.footer .footer_block a {
+  cursor: pointer;
+  font-family: "OpenSans", sans-serif;
+  color: #fff;
+  font-weight: 300;
+  font-size: 20px;
+  text-decoration: none;
 }/*# sourceMappingURL=style.css.map */
