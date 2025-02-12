@@ -9,6 +9,7 @@ $second-color: #EEAF00;
     margin: 0;
     -webkit-tap-highlight-color: transparent;
     scroll-behavior: smooth;
+    scroll-margin-top: 50px;
 }
 
 body {
@@ -47,6 +48,14 @@ body {
         border-color: $second-color;
     }
 
+    &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: red;
+    }
+
 }
 
 .title {
@@ -61,4 +70,16 @@ body {
     &:active {
         transform: scale(0.9);
     }
+}
+
+
+
+
+
+
+.iti--fullscreen-popup.iti--container {
+    position: relative !important;
+    top: 0;
+    left: 0;
+
 }

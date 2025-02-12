@@ -1,0 +1,24 @@
+.iti {
+    width: 100%;
+    --iti-border-color: #5b5b5b;
+    --iti-dialcode-color: #999999;
+    --iti-dropdown-bg: #0d1117;
+    --iti-arrow-color: #aaaaaa;
+    --iti-hover-color: #30363d;
+    --iti-path-flags-1x: url('../static/flags/flags.webp');
+    --iti-path-flags-2x: url('../static/flags/flags@2x.webp'); //flags@2x.webp
+    --iti-path-globe-1x: url('../static/flags/globe_light.webp'); //globe.webp
+    --iti-path-globe-2x: url('../static/flags/globe@2x.webp'); //globe@2x.webp
+}
+
+.iti .iti__selected-dial-code {
+    font-size: 25px;
+}
+
+.iti__country-container {
+    top: -1px;
+}
+
+.iti__search-input {
+    padding: 10px !important;
+}

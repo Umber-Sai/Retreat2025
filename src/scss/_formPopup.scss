@@ -1,16 +1,11 @@
 .registration {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $bg-color;
-    .popup_container {
+    .container {
 
-        .popup_title {
+        .registration_title {
             margin-top: 30px;
-            text-align: center;
         }
 
-        .popup_form {
+        .registration_form {
             padding: 20px 0;
 
             .form_input {

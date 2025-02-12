@@ -23,6 +23,7 @@ module.exports = {
         { from: "src/styles", to: "styles" },
         { from: "src/static", to: "static" },
         { from: "src/templates", to: "templates" },
+        { from: "'../../node_modules/intl-tel-input/build/img", to: "static/flags"}
       ],
     }),
     new HtmlWebpackPlugin({

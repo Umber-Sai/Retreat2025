@@ -6,7 +6,6 @@ import faq from './content/faq.json';
 import { Header } from "./components/header";
 
 
-
 class App {
 
     language : 'Ru' | 'En' = 'Ru';
