@@ -1485,6 +1485,7 @@ body {
 
 .iti .iti__selected-dial-code {
   font-size: 25px;
+  transition: all 0.2s ease-out;
 }
 
 .iti__country-container {
@@ -1493,6 +1494,10 @@ body {
 
 .iti__search-input {
   padding: 10px !important;
+}
+
+.invalid .iti .iti__selected-dial-code {
+  color: red;
 }
 
 @keyframes header-scroll {

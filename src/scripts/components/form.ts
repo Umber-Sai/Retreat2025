@@ -1,4 +1,5 @@
 
+
 import cities from '../content/cities.json';
 import intlTelInput from "intl-tel-input";
 
@@ -16,7 +17,7 @@ export class Form {
 
     isValid: boolean = true;
     popup: HTMLElement | null = document.getElementById('formPopup')
-    formInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('.form_input input');
+    formInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('.form_input');
     submitFormButton: HTMLElement | null = document.getElementById('submitFormButton');
     phoneInput = document.querySelector("#phone") as HTMLInputElement;
     iti = intlTelInput(this.phoneInput, {
@@ -46,14 +47,20 @@ export class Form {
 
     constructor() {
 
+        console.log(this.formInputs)
+
         this.formInputs.forEach(item => {
-            item.onfocus = (e) => {
-                (e.target as HTMLElement).parentElement?.classList.remove('no_value');
-                (e.target as HTMLElement).parentElement?.classList.remove('invalid');
+            const input = item.querySelector('input.form_input__input') as HTMLInputElement | null;
+            if(input) {
+                input.onfocus = () => {
+                    item.classList.remove('no_value');
+                    item.classList.remove('invalid');
+                }
             }
+           
         });
 
-        this.cityEngine();
+        // this.cityEngine();
         // this.phoneEngine();
 
         this.submitFormButton?.addEventListener('click', this.validation.bind(this))
@@ -77,8 +84,6 @@ export class Form {
                 if (firstVal) {
                     cityInput.value = firstVal;
                 } else {
-                    console.log(filteredCities[0])
-                    console.log(cityInput.parentElement)
                     cityInput.parentElement!.classList.add('invalid');
                 }
             }
@@ -124,32 +129,17 @@ export class Form {
         console.log(this.iti.isValidNumber())
         this.isValid = true
         this.formInputs.forEach(item => {
-            if (!item.value) {
-                item.parentElement?.classList.add('no_value');
+            const input = item.querySelector('input.form_input__input') as HTMLInputElement | null;
+            console.log(item)
+            if (input && !input.value) {
+                item.classList.add('no_value');
                 this.isValid = false
-            } else if (item.classList.contains('invalid') || item.classList.contains('no_value')) {
-                this.isValid = false
-            }
-
-            const phoneValidation : any = {
-                1 : "Неверный номер",
-                2 : "Слишком короткий",
-                3 : "Слишком длинный",
-                4 : "Неверный номер",
-                5 : "Неверный номер"
-            }
-
-            const phoneValid = this.iti.getValidationError();
-            if(phoneValid !== 0) {
-                this.isValid = false;
-                const phoneFormInput = document.getElementById('phoneFormInput') as HTMLElement;
-                phoneFormInput?.classList.add('invalid');
-                (phoneFormInput!.querySelector('.input_errors') as HTMLElement).innerText = phoneValidation[phoneValid]
-            }
-
-
-
+            } 
         });
+        if(!this.iti.isValidNumber()) {
+            document.getElementById('phoneFormInput')?.classList.add('invalid')
+            this.isValid = false
+        }
         if (this.isValid) {
             console.log('passed')
             alert('passed')

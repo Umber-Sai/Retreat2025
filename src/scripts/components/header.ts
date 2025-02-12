@@ -21,7 +21,6 @@ export class Header {
             const maxScroll = 800; // Граница анимации
 
             let progress = Math.min(scrollY / maxScroll, 1).toFixed(3);
-            console.log(`rgba(0, 0, 0, ${progress})`)
 
             // Изменяем только прозрачность фона
             this.header!.style.backgroundColor = `rgba(18, 18, 18, ${progress})`;

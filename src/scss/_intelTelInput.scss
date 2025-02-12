@@ -13,6 +13,7 @@
 
 .iti .iti__selected-dial-code {
     font-size: 25px;
+    transition: all .2s ease-out;
 }
 
 .iti__country-container {
@@ -21,4 +22,8 @@
 
 .iti__search-input {
     padding: 10px !important;
+}
+
+.invalid .iti .iti__selected-dial-code{
+    color: red;
 }
