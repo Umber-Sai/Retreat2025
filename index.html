@@ -48,7 +48,7 @@
             </li>
           </ul>
           <div class="menu_addition">
-            <a>+972 50 6685911</a>
+            <a href="tel:+972506685911">+972 50 6685911</a>
           </div>
         </nav>
       </div>
@@ -440,10 +440,7 @@
 
         <div class="form_input">
           <input class="form_input__input" type="text" id="city" placeholder="" required>
-          <label for="city">Город</label>
-          <div class="autocompliter" id="autocompliter">
-
-          </div>
+          <label for="city">Город / Страна</label>
           <div class="input_errors">
             <div class="enter_value">Заполните поле</div>
             <div class="change_value">Неверный город</div>
@@ -466,14 +463,74 @@
           </div>
         </div>
 
-        <div class="form_input">
-
+        <div class="form_input with_btn ">
+          <div class="form_input_title">
+            Дни моего участия:
+          </div>
+          <div class="form_input_active">
+            <input type="checkbox" id="22">
+            <label for="22">22 мая</label>
+            <input type="checkbox" id="23">
+            <label for="23">23 мая</label>
+            <input type="checkbox" id="24">
+            <label for="24">24 мая</label>
+          </div>
         </div>
 
+        <div class="form_input with_btn">
+          <div class="form_input_title">
+            Я хочу послужить на Ретрите:
+          </div>
+          <div class="form_input_active">
+            <input type="radio" name="serve" id="serveYes">
+            <label for="serveYes">Да</label>
+            <input type="radio" name="serve" id="serveNo" checked>
+            <label for="serveNo">Нет</label>
+          </div>
+          <div class="form_input_active form_input_additional big_btn">
+            <input type="radio" name="serving" id="asher">
+            <label for="asher">Ашер</label>
+            <input type="radio" name="serving" id="childServer">
+            <label for="childServer">Детский служитель</label>
+            <input type="radio" name="serving" id="registrator">
+            <label for="registrator">Регистрация</label>
+          </div>
+        </div>
 
-
+        <div class="form_input with_btn children">
+          <div class="form_input_title">
+            Со мной будут дети:
+          </div>
+          <div class="form_input_active">
+            <input type="radio" name="children" id="withChild">
+            <label for="withChild">Да</label>
+            <input type="radio" name="children" id="withoutChild" checked>
+            <label for="withoutChild">Нет</label>
+          </div>
+          <div class="form_input_active form_input_additional">
+            <div class="form_input_active_row">
+              <input type="checkbox" id="less5">
+              <label for="less5">до 5 лет</label>
+              <span>под присмотром родителей</span>
+            </div>
+          
+            <div class="form_input_active_row">
+              <input type="checkbox" id="5to7">
+              <label for="5to7">5-7 лет</label>
+              <span>количество детей: </span>
+              <input type="number">
+            </div>
+          
+            <div class="form_input_active_row">
+              <input type="checkbox" id="8to12">
+              <label for="8to12">8-12 лет</label>
+              <span>количество детей: </span>
+              <input type="number">
+            </div>
+          </div>
+        </div>
+        
         <button type="button" class="btn registration_btn" id="submitFormButton">Отправить</button>
-
       </form>
     </div>
   </section>
@@ -485,7 +542,7 @@
     </div>
     <div class="footer_block">
       <div class="block_title">Контакты:</div>
-      <a class="footer_phone">+972 50 6685911</a>
+      <a href="tel:+972506685911" class="footer_phone">+972 50 6685911</a>
     </div>
   </footer>
 

@@ -3,6 +3,7 @@
 $text-color: #fff;
 $bg-color: #121212;
 $second-color: #EEAF00;
+$second-color-dark: #312814;
 
 * {
     padding: 0;
@@ -17,7 +18,7 @@ body {
     font-family: 'OpenSans', sans-serif;
     color: $text-color;
     font-weight: 300;
-    font-size: 20px;
+    font-size: 25px;
   }
 
 .container {
@@ -77,9 +78,3 @@ body {
 
 
 
-.iti--fullscreen-popup.iti--container {
-    position: relative !important;
-    top: 0;
-    left: 0;
-
-}
