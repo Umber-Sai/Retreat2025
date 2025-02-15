@@ -1,6 +1,5 @@
 
 
-import cities from '../content/cities.json';
 import intlTelInput from "intl-tel-input";
 
 declare global {
@@ -32,11 +31,11 @@ export class Form {
             });
           },
         initialCountry: "auto",
-        geoIpLookup: (success: any, failure: any) => {
+        geoIpLookup: (success, failure) => {
             fetch("https://ipapi.co/json")
-                .then((res) => res.json())
-                .then((data) => success(data.country_code))
-                .catch(() => failure());
+              .then((res) => res.json())
+              .then((data) => success(data.country_code))
+              .catch(() => console.error("can't get country"));
         },
         useFullscreenPopup: false,
         separateDialCode: true,
@@ -44,10 +43,35 @@ export class Form {
         fixDropdownWidth: true,
     });
 
+    childrenToggle = document.querySelectorAll('input[name="children"]') as NodeListOf<HTMLInputElement>;
+    childrenAccordion = document.querySelector('.form_accordion.children');
+
+    serveToggle = document.querySelectorAll('input[name="serve"]') as NodeListOf<HTMLInputElement>;
+    serveAccordion = document.querySelector('.form_accordion.serve');
+
 
     constructor() {
+        this.childrenToggle.forEach((btn : HTMLInputElement) => {
+            btn.onclick = (e) => {
+                const value = (e.target as HTMLInputElement)?.value;
+                if(value === 'open') {
+                    this.childrenAccordion?.classList.add('open');
+                } else {
+                    this.childrenAccordion?.classList.remove('open');
+                }
+            }
+        });
 
-        console.log(this.formInputs)
+        this.serveToggle.forEach((btn : HTMLInputElement) => {
+            btn.onclick = (e) => {
+                const value = (e.target as HTMLInputElement)?.value;
+                if(value === 'open') {
+                    this.serveAccordion?.classList.add('open');
+                } else {
+                    this.serveAccordion?.classList.remove('open');
+                }
+            }
+        })
 
         this.formInputs.forEach(item => {
             const input = item.querySelector('input.form_input__input') as HTMLInputElement | null;
@@ -60,69 +84,10 @@ export class Form {
            
         });
 
-        // this.cityEngine();
-        // this.phoneEngine();
 
         this.submitFormButton?.addEventListener('click', this.validation.bind(this))
 
     }
-
-    cityEngine() {
-        const cityInput: HTMLInputElement | null = document.getElementById('city') as HTMLInputElement | null;
-        const autocompliterElement: HTMLElement | null = document.getElementById('autocompliter');
-        let filteredCities: string[] = cities.cities;
-        fillAuthocompliter(cities.cities)
-        if (cityInput) {
-            cityInput.onkeyup = () => {
-                filteredCities = cities.cities.filter(item => item.toLowerCase().match(cityInput.value.toLowerCase()));
-                fillAuthocompliter(filteredCities)
-            }
-            cityInput.onblur = (e) => {
-                const value = (e.target as HTMLInputElement).value;
-                if (!value) return;
-                const firstVal = filteredCities.filter(item => item.toLowerCase().match(value.toLowerCase()))[0]
-                if (firstVal) {
-                    cityInput.value = firstVal;
-                } else {
-                    cityInput.parentElement!.classList.add('invalid');
-                }
-            }
-        } else {
-            console.error('no city input')
-        }
-
-        function fillAuthocompliter(cities: string[]) {
-            autocompliterElement!.innerHTML = ''
-            cities.forEach(city => {
-                const cityElement: HTMLElement = document.createElement('div');
-                cityElement.innerText = city;
-                cityElement.onclick = () => {
-                    if (cityInput) cityInput.value = city
-                }
-                autocompliterElement?.appendChild(cityElement);
-            });
-        }
-    }
-
-    // phoneEngine() {
-    //     const phoneInput: HTMLInputElement | null = document.getElementById('phone') as HTMLInputElement | null;
-
-    //     if (phoneInput) {
-    //         phoneInput.oninput = (e) => {
-    //             const key = (e as InputEvent).data!;
-    //             if (key?.match(/\D/g)) {
-    //                 const value = (e.target as HTMLInputElement).value;
-    //                 (e.target as HTMLInputElement).value = value.replace(key, '');
-    //             }
-    //         }
-    //         phoneInput.onblur = (e) => {
-    //             const value = (e.target as HTMLInputElement).value;
-    //             if (value && !value.match(/5\d{8}/)) {
-    //                 phoneInput.parentElement?.classList.add('invalid')
-    //             }
-    //         }
-    //     }
-    // }
 
 
     validation() {

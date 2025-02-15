@@ -1262,7 +1262,7 @@ body {
   font-family: "OpenSans", sans-serif;
   color: #fff;
   font-weight: 300;
-  font-size: 25px;
+  font-size: clamp(20px, 3vw, 25px);
 }
 
 .container {
@@ -1875,82 +1875,22 @@ body {
 .registration .container .registration_form .form_input.invalid .input_errors .change_value {
   display: block;
 }
-.registration .container .registration_form .form_input.with_btn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-shrink: 0;
-  flex-wrap: wrap;
-  gap: 20px 10px;
+.registration .container .registration_form .form_input.form_accordion {
+  display: grid;
+  grid-template-rows: min-content 0fr;
+  transition: all 0.5s ease-out;
 }
-.registration .container .registration_form .form_input.with_btn.children {
-  min-width: 382px;
+.registration .container .registration_form .form_input.form_accordion.open {
+  grid-template-rows: min-content 1fr;
 }
-.registration .container .registration_form .form_input.with_btn.children .form_input_additional {
-  flex-direction: column;
-  row-gap: 16px;
+.registration .container .registration_form .form_input.form_accordion .form_input_body {
+  overflow: hidden;
 }
-.registration .container .registration_form .form_input.with_btn .form_input_title {
-  width: 162px;
-  min-width: -moz-max-content;
-  min-width: max-content;
-}
-.registration .container .registration_form .form_input.with_btn .form_input_active {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  flex-shrink: 0;
-  flex-wrap: nowrap;
-}
-.registration .container .registration_form .form_input.with_btn .form_input_active.form_input_additional {
-  width: 100%;
-}
-.registration .container .registration_form .form_input.with_btn .form_input_active.form_input_additional.big_btn > label {
-  min-width: -moz-max-content;
-  min-width: max-content;
-  flex-grow: 1;
-  font-size: 25px;
-  font-weight: 300;
-}
-.registration .container .registration_form .form_input.with_btn .form_input_active.form_input_additional .form_input_active_row {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  flex-wrap: nowrap;
-}
-.registration .container .registration_form .form_input.with_btn .form_input_active.form_input_additional .form_input_active_row label {
-  min-width: 134px;
-  margin-right: 16px;
-  flex-shrink: 0;
-}
-.registration .container .registration_form .form_input.with_btn .form_input_active.form_input_additional .form_input_active_row input {
-  margin-left: 5px;
-  width: 70px;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #fff;
-  background-color: transparent;
-  color: #fff;
-  font-size: 25px;
-  padding: 0 5px;
-  box-sizing: border-box;
-}
-.registration .container .registration_form .form_input.with_btn .form_input_active input[type=checkbox], .registration .container .registration_form .form_input.with_btn .form_input_active input[type=radio] {
-  display: none;
-  position: relative;
-  z-index: -1;
-}
-.registration .container .registration_form .form_input.with_btn .form_input_active input[type=checkbox]:checked + label, .registration .container .registration_form .form_input.with_btn .form_input_active input[type=radio]:checked + label {
-  background-color: #EEAF00;
-  color: #121212;
-}
-.registration .container .registration_form .form_input.with_btn .form_input_active label {
+.registration .container .registration_form .form_input.form_accordion label {
   display: inline-block;
   min-width: 86px;
   height: 37px;
-  padding: 0 14px;
+  padding: 4px 14px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -1958,6 +1898,75 @@ body {
   border-radius: 20px;
   background-color: #312814;
   cursor: pointer;
+}
+.registration .container .registration_form .form_input.form_accordion input[type=checkbox],
+.registration .container .registration_form .form_input.form_accordion input[type=radio] {
+  display: none;
+  position: relative;
+  z-index: -1;
+}
+.registration .container .registration_form .form_input.form_accordion input[type=checkbox]:checked + label,
+.registration .container .registration_form .form_input.form_accordion input[type=radio]:checked + label {
+  background-color: #EEAF00;
+  color: #121212;
+}
+.registration .container .registration_form .form_input .form_input_head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.registration .container .registration_form .form_input .form_input_head .form_input_title {
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
+.registration .container .registration_form .form_input .form_input_head .form_input_active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+.registration .container .registration_form .form_input .form_input_body.grid {
+  display: grid;
+  grid-template-columns: minmax(86px, 134px) 1fr;
+  gap: 16px 5px;
+}
+.registration .container .registration_form .form_input .form_input_body.flex {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+}
+.registration .container .registration_form .form_input .form_input_body.flex > * {
+  flex-grow: 1;
+}
+.registration .container .registration_form .form_input .form_input_body {
+  margin-top: 16px;
+}
+.registration .container .registration_form .form_input .form_input_body .title_and_input {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 5px;
+  flex-wrap: nowrap;
+}
+.registration .container .registration_form .form_input .form_input_body .title_and_input span {
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
+.registration .container .registration_form .form_input .form_input_body .title_and_input input {
+  max-width: 56px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  font-size: 20px;
+  padding: 0 5px;
+  box-sizing: border-box;
 }
 .registration .container .registration_form .registration_btn {
   margin-top: 95px;

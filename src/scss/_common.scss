@@ -18,7 +18,7 @@ body {
     font-family: 'OpenSans', sans-serif;
     color: $text-color;
     font-weight: 300;
-    font-size: 25px;
+    font-size: clamp(20px, 3vw, 25px);
   }
 
 .container {

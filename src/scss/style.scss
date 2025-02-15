@@ -30,7 +30,7 @@
   animation-fill-mode: both;
   animation-timeline: scroll();
   animation-range: 0px 700px;
-  
+
 
   .header_lang {
     display: flex;
@@ -45,7 +45,7 @@
       position: relative;
       z-index: -100;
 
-      &:checked + label {
+      &:checked+label {
         background-color: #c2c2c294;
       }
     }
@@ -60,10 +60,10 @@
       border-radius: 50%;
       border: 1px solid #fff;
       cursor: pointer;
- 
+
       transition: all .2s;
- 
- 
+
+
       font-family: 'Inter';
       font-size: 16px;
       color: $text-color
@@ -211,6 +211,7 @@
       grid-template-columns: 1fr;
       justify-content: space-between;
       gap: 50px;
+
       .condition_card {
         display: flex;
         flex-direction: column;
@@ -221,9 +222,11 @@
         .card_svg {
           width: clamp(80px, calc(100% / 3 - 40px / 3), 120px);
           aspect-ratio: 1;
+
           svg {
             width: 100%;
             aspect-ratio: 1;
+
             path {
               fill: $second-color
             }
@@ -325,269 +328,299 @@
 
 .registration {
   padding: 60px 0;
+
   .container {
-      .registration_title {
-          margin-bottom: 60px;
-      }
+    .registration_title {
+      margin-bottom: 60px;
+    }
 
-      .registration_form {
+    .registration_form {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 30px 20px;
+      flex-wrap: wrap;
+
+
+
+      .form_input {
+        max-width: 467px;
+        min-width: 280px;
+        flex: 1 1 calc(50% - 10px);
+        position: relative;
+
+
+        input,
+        label,
+        .input_errors {
+          transition: all .2s ease-out;
+        }
+
+        &>input,
+        &>div>input {
+          width: 100%;
+          padding: 13px 0px;
+          box-sizing: border-box;
+
+          border: none;
+          border-bottom: 1px solid $text-color;
+          background-color: transparent !important;
+          outline: none;
+          color: $text-color;
+          font-size: 25px;
+          font-family: 'OpenSans', sans-serif;
+
+          input:-webkit-autofill,
+          input:-webkit-autofill:focus {
+            transition: background-color 0s 600000s, color 0s 600000s !important;
+          }
+
+          &:focus+label,
+          &:not(:placeholder-shown)+.input_label {
+            top: -11px;
+            left: 0px;
+            font-size: 16px;
+
+          }
+
+          &#city:focus~.autocompliter {
+            display: block;
+          }
+
+          &#phone {
+            padding-left: 60px;
+
+            &~span {
+              position: absolute;
+              top: 16px;
+              left: 21px;
+              opacity: 0;
+              transition: all .1s;
+            }
+
+            &:focus~span,
+            &:valid~span {
+              opacity: 100;
+            }
+          }
+        }
+
+        &>label {
+          position: absolute;
+          top: 16px;
+          left: 0px;
+        }
+
+        .input_errors {
+          position: absolute;
+          right: 34px;
+          bottom: -8px;
+          color: red;
+          padding: 0 5px;
+          border-radius: 10px;
+          font-size: 16px;
+          background-color: $bg-color;
+
+          .enter_value {
+            display: none;
+          }
+
+          .change_value {
+            display: none;
+          }
+        }
+
+        .autocompliter {
+          display: none;
+          width: 100%;
+          max-height: 300px;
+          overflow-y: scroll;
+          background-color: #fff;
+          position: absolute;
+          z-index: 3;
+          top: 65px;
+          left: 0px;
+          right: 0;
+
+          border-radius: 10px;
+
+          color: $bg-color;
+
+          div {
+            padding: 10px 20px;
+          }
+
+          &:active {
+            display: block;
+          }
+        }
+
+        &.no_value {
+          input {
+            border-color: red;
+          }
+
+          label,
+          input,
+          span {
+            color: red;
+          }
+
+          .input_errors {
+            .enter_value {
+              display: block;
+            }
+          }
+        }
+
+        &.invalid {
+          input {
+            border-color: red;
+          }
+
+
+          label,
+          input,
+          span {
+            color: red;
+          }
+
+          .input_errors {
+            .change_value {
+              display: block;
+            }
+          }
+        }
+
+        // accordion rulls
+        &.form_accordion {
+          display: grid;
+          grid-template-rows: min-content 0fr;
+          transition: all .5s ease-out;
+
+          &.open {
+            grid-template-rows: min-content 1fr;
+          }
+
+          .form_input_head {
+          }
+
+          .form_input_body {
+            overflow: hidden;
+          }
+
+        }
+
+        //labels rulls
+        &.form_accordion {
+          label {
+            display: inline-block;
+            min-width: 86px;
+            height: 37px;
+            padding: 4px 14px;
+            box-sizing: border-box;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 20px;
+            background-color: $second-color-dark;
+            cursor: pointer;
+          }
+
+          input[type="checkbox"],
+          input[type="radio"] {
+            display: none;
+            position: relative;
+            z-index: -1;
+
+            &:checked+label {
+              background-color: $second-color;
+              color: $bg-color;
+            }
+          }
+        }
+
+        .form_input_head {
           display: flex;
-          align-items: baseline;
-          justify-content: center;
-          gap:  30px 20px;
+          align-items: center;
+          justify-content: space-between;
           flex-wrap: wrap;
+          gap: 10px;
 
-         
+          .form_input_title {
+            min-width: max-content;
+          }
+
+          .form_input_active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap;
+            gap: 10px;
+          }
+        }
+        .form_input_body.grid{
+          display: grid;
+          grid-template-columns: minmax(86px, 134px) 1fr;
+          gap: 16px 5px;
+        }
+
+        .form_input_body.flex {
+          display: flex;
+          align-items: center;
+          justify-content: start;
+          flex-wrap: wrap;
+          gap: 10px 20px;
+          &>* {
+            flex-grow: 1;
+
+          }
+        }
+
+
+        .form_input_body {
+          margin-top: 16px;
           
-          .form_input {
-              max-width: 467px;
-              min-width: 280px;
-              flex: 1 1 calc(50% - 10px);
-              position: relative;
 
+          .title_and_input {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            gap: 5px;
+            flex-wrap: nowrap;
 
-              input,
-              label,
-              .input_errors {
-                  transition: all .2s ease-out;
-              }
+            span {
+              min-width: max-content;
+            }
 
-              &>input, &>div>input {
-                  width: 100%;
-                  padding: 13px 0px;
-                  box-sizing: border-box;
+            input {
+              max-width: 56px;
 
-                  border: none;
-                  border-bottom: 1px solid $text-color;
-                  background-color: transparent !important;
-                  outline: none;
-                  color: $text-color;
-                  font-size: 25px;
-                  font-family: 'OpenSans', sans-serif;
+              background-color: transparent;
+              outline: none;
+              border: none;
+              border-bottom: 1px solid $text-color;
 
-                  input:-webkit-autofill,
-                  input:-webkit-autofill:focus {
-                      transition: background-color 0s 600000s, color 0s 600000s !important;
-                  }
+              color: $text-color;
+              font-size: 20px;
 
-                  &:focus+label,
-                  &:not(:placeholder-shown)+.input_label {
-                      top: -11px;
-                      left: 0px;
-                      font-size: 16px;
-
-                  }
-
-                  &#city:focus~.autocompliter {
-                      display: block;
-                  }
-
-                  &#phone {
-                      padding-left: 60px;
-
-                      &~span {
-                          position: absolute;
-                          top: 16px;
-                          left: 21px;
-                          opacity: 0;
-                          transition: all .1s;
-                      }
-
-                      &:focus~span,
-                      &:valid~span {
-                          opacity: 100;
-                      }
-                  }
-              }
-
-              &>label {
-                  position: absolute;
-                  top: 16px;
-                  left: 0px;
-              }
-
-              .input_errors {
-                  position: absolute;
-                  right: 34px;
-                  bottom: -8px;
-                  color: red;
-                  padding: 0 5px;
-                  border-radius: 10px;
-                  font-size: 16px;
-                  background-color: $bg-color;
-
-                  .enter_value {
-                      display: none;
-                  }
-
-                  .change_value {
-                      display: none;
-                  }
-              }
-
-              .autocompliter {
-                  display: none;
-                  width: 100%;
-                  max-height: 300px;
-                  overflow-y: scroll;
-                  background-color: #fff;
-                  position: absolute;
-                  z-index: 3;
-                  top: 65px;
-                  left: 0px;
-                  right: 0;
-
-                  border-radius: 10px;
-
-                  color: $bg-color;
-
-                  div {
-                      padding: 10px 20px;
-                  }
-
-                  &:active {
-                      display: block;
-                  }
-              }
-
-              &.no_value {
-                  input {
-                      border-color: red;
-                  }
-
-                  label,
-                  input,
-                  span {
-                      color: red;
-                  }
-
-                  .input_errors {
-                      .enter_value {
-                          display: block;
-                      }
-                  }
-              }
-
-              &.invalid {
-                  input {
-                      border-color: red;
-                  }
-
-
-                  label,
-                  input,
-                  span {
-                      color: red;
-                  }
-
-                  .input_errors {
-                      .change_value {
-                          display: block;
-                      }
-                  }
-              }
-
-              &.with_btn {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                flex-shrink: 0;
-                flex-wrap: wrap;
-                gap: 20px 10px;
-                &.children {
-                  min-width: 382px;
-                  .form_input_additional {
-                    flex-direction: column;
-                    row-gap: 16px;
-                  }
-                }
-                .form_input_title {
-                  width: 162px;
-                  min-width: max-content;
-                }
-                .form_input_active {
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  gap: 10px;
-                  flex-shrink: 0;
-                  flex-wrap: nowrap;
-
-                  &.form_input_additional {
-                    width: 100%;
-                    &.big_btn > label{
-                      min-width: max-content;
-                      flex-grow: 1;
-                      font-size: 25px;
-                      font-weight: 300;
-                    }
-                  
-                    .form_input_active_row {
-                      width: 100%;
-                      display: flex;
-                      align-items: center;
-                      justify-content: start;
-                      flex-wrap: nowrap;
-                      label {
-                        min-width: 134px;
-                        margin-right: 16px;
-                        flex-shrink: 0;
-                      }
-                      input {
-                        margin-left: 5px;
-                        width: 70px;
-                        border: none;
-                        outline: none;
-                        border-bottom: 1px solid $text-color;
-                        background-color: transparent;
-
-                        color: $text-color;
-                        font-size: 25px;
-                        padding: 0 5px;
-                        box-sizing: border-box;
-                      }
-
-                    }
-                  }
-
-                  input[type="checkbox"], input[type="radio"] {
-                    display: none;
-                    position: relative;
-                    z-index: -1;
-                    &:checked + label {
-                      background-color: $second-color;
-                      color: $bg-color;
-                    }
-
-                  }
-
-                  & label {
-                    display: inline-block;
-                    min-width: 86px;
-                    height: 37px;
-                    padding: 0 14px;
-                    box-sizing: border-box;
-
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                    border-radius: 20px;
-                    background-color: $second-color-dark;
-                    cursor: pointer;
-                  }
-                }
-              }
-
+              padding: 0 5px;
+              box-sizing: border-box;
+            }
           }
-          .registration_btn {
-            margin-top: 95px;
-            padding-right: 80px;
-            padding-left: 80px;
-            background-color: #582ffa;
-            border-color: #582ffa;
-          }
+        }
       }
+
+      .registration_btn {
+        margin-top: 95px;
+        padding-right: 80px;
+        padding-left: 80px;
+        background-color: #582ffa;
+        border-color: #582ffa;
+      }
+    }
   }
 }
 
@@ -605,6 +638,7 @@
 
   .footer_block {
     min-width: 190px;
+
     a {
       cursor: pointer;
       font-family: 'OpenSans', sans-serif;
