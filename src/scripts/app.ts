@@ -80,7 +80,7 @@ class App {
 
 }
 
-document.onload = () => {
+window.onload = () => {
     new App()
 }
 
