@@ -11,8 +11,17 @@ class App {
     language : 'Ru' | 'En' = 'Ru';
     speakersMotherElement : HTMLElement | null = document.getElementById('speakersCards');
     faqMotherElement : HTMLElement | null = document.getElementById('faq_accordion');
-   
+    registrationSection = document.getElementById('registration');
+    toFormBtn = document.querySelectorAll('.toForm') as NodeListOf<HTMLElement>
+
+
     constructor() {
+        this.toFormBtn.forEach((btn : HTMLElement) => {
+            btn.onclick = () => {
+                this.registrationSection?.scrollIntoView({behavior : "smooth"});
+            }
+        });
+
         new Header()
         new Form()
         

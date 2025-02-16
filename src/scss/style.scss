@@ -4,6 +4,7 @@
 @import '_fonts.scss';
 @import '_burger.scss';
 @import '_adaptive.scss';
+@import '_form.scss';
 @import '_intelTelInput.scss';
 
 
@@ -88,7 +89,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    filter: blur(5px);
+    filter: blur(3px);
 
     &::after {
       content: '';
@@ -327,7 +328,7 @@
 }
 
 .registration {
-  padding: 60px 0;
+  padding: 60px 0 100px;
 
   .container {
     .registration_title {
@@ -367,7 +368,7 @@
           background-color: transparent !important;
           outline: none;
           color: $text-color;
-          font-size: 25px;
+          font-size: clamp(20px, 3vw, 25px);
           font-family: 'OpenSans', sans-serif;
 
           input:-webkit-autofill,
@@ -597,6 +598,7 @@
 
             input {
               max-width: 56px;
+              text-align: center;
 
               background-color: transparent;
               outline: none;
@@ -613,12 +615,8 @@
         }
       }
 
-      .registration_btn {
-        margin-top: 95px;
-        padding-right: 80px;
-        padding-left: 80px;
-        background-color: #582ffa;
-        border-color: #582ffa;
+      .btn {
+        margin-top: clamp(60px, 20vw, 90px);
       }
     }
   }

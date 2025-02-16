@@ -70,7 +70,7 @@
       </div>
 
       <div class="main_active">
-        <button class="btn press">Регистрация</button>
+        <button class="btn press toForm" >Регистрация</button>
       </div>
     </div>
   </section>
@@ -397,7 +397,7 @@
       </div>
 
       <div class="conditions_active">
-        <button class="btn press">Регистрация</button>
+        <button class="btn press toForm">Регистрация</button>
       </div>
 
     </div>
@@ -412,13 +412,13 @@
     </div>
   </section>
 
-  <section class="registration">
+  <section class="registration" id="registration">
     <div class="container">
       <div class="registration_title title">
         Регистрация
       </div>
 
-      <form class="registration_form">
+      <form class="registration_form" id="registrationForm">
 
         <div class="form_input">
           <input class="form_input__input" type="text" id="firstName" placeholder="" required>
@@ -465,7 +465,7 @@
 
         <div class="form_input form_accordion">
           <div class="form_input_head">
-            <div class="form_input_title">
+            <div class="form_input_title" id="days_title">
               Дни моего участия:
             </div>
             <div class="form_input_active">
@@ -525,22 +525,29 @@
             <label for="from5to7">5-7 лет</label>
             <div class="title_and_input">
               <span>количество детей: </span>
-              <input type="number" id="from5to7childrenCount">
+              <input type="number" min="0" id="from5to7childrenCount">
             </div>
 
             <input type="checkbox" id="from8to12">
             <label for="from8to12">8-12 лет</label>
             <div class="title_and_input">
               <span>количество детей: </span>
-              <input type="number" id="from8to12childrenCount">
+              <input type="number" min="0" id="from8to12childrenCount">
             </div>
           </div>
         </div>
 
+        <button type="button" class="btn" id="submitFormButton">Отправить</button>
 
-        
-        <button type="button" class="btn registration_btn" id="submitFormButton">Отправить</button>
+        <div class="registration_form_popup_sending" id="registration_form_popup_sending">
+          <div>Отправляем данные!</div>
+          <div class="loader"></div>
+        </div>
+        <div class="registration_form_popup_ready" id="registration_form_popup_ready">
+          Ждём вас на ретрите!
+        </div>
       </form>
+
     </div>
   </section>
 

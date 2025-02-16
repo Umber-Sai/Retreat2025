@@ -1,0 +1,81 @@
+#days_title {
+    transition: all .3s;
+    &.invalid {
+        color: red;
+    }
+}
+
+.form_input {
+    &.children {
+        .form_input_body {
+            input[type='checkbox']#from5to7:checked ~ .title_and_input input#from5to7childrenCount,
+            input[type='checkbox']#from8to12:checked ~ .title_and_input input#from8to12childrenCount {
+                opacity: 100;
+                pointer-events: auto;
+            }
+
+            .title_and_input input {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+    }
+}
+
+
+.registration_form {
+    position: relative;
+    .registration_form_popup_sending, 
+    .registration_form_popup_ready {
+        position: absolute;
+        z-index: 50;
+        top: -20px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+
+        transition: all .5s ease-in;
+        background-color: $bg-color;
+        opacity: 0;
+        pointer-events: none;
+
+        font-weight: 700;
+        font-size: 30px;
+
+
+        &.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+}
+
+.loader {
+    display: inline-flex;
+    gap: 5px;
+  }
+  .loader:before,
+  .loader:after {
+    content: "";
+    width: 25px;
+    aspect-ratio: 1;
+    box-shadow: 0 0 0 3px inset #fff;
+    animation: l4 1.5s infinite;
+  }
+  .loader:after {
+    --s: -1;
+    animation-delay: 0.75s
+  }
+  @keyframes l4 {
+    0%     {transform:scaleX(var(--s,1)) translate(0) rotate(0)}
+    16.67% {transform:scaleX(var(--s,1)) translate(-50%) rotate(0)}
+    33.33% {transform:scaleX(var(--s,1)) translate(-50%) rotate(90deg)}
+    50%,
+    100%   {transform:scaleX(var(--s,1)) translate(0) rotate(90deg)}
+  }
