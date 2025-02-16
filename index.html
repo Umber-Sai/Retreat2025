@@ -439,8 +439,8 @@
         </div>
 
         <div class="form_input">
-          <input class="form_input__input" type="text" id="city" placeholder="" required>
-          <label for="city" class="input_label">Город / Страна</label>
+          <input class="form_input__input" type="text" id="location" placeholder="" required>
+          <label for="location" class="input_label">Город / Страна</label>
           <div class="input_errors">
             <div class="enter_value">Заполните поле</div>
             <div class="change_value">Неверный город</div>
@@ -463,18 +463,18 @@
           </div>
         </div>
 
-        <div class="form_input with_btn form_accordion">
+        <div class="form_input form_accordion">
           <div class="form_input_head">
             <div class="form_input_title">
               Дни моего участия:
             </div>
             <div class="form_input_active">
-              <input type="checkbox" id="22">
-              <label for="22">22 мая</label>
-              <input type="checkbox" id="23">
-              <label for="23">23 мая</label>
-              <input type="checkbox" id="24">
-              <label for="24">24 мая</label>
+              <input type="checkbox" id="day22" class="participate_date">
+              <label for="day22">22 мая</label>
+              <input type="checkbox" id="day23" class="participate_date">
+              <label for="day23">23 мая</label>
+              <input type="checkbox" id="day24" class="participate_date">
+              <label for="day24">24 мая</label>
             </div>
           </div>
         </div>
@@ -492,13 +492,13 @@
             </div>
           </div>
           <div class="form_input_body flex">
-              <input type="radio" name="serving" id="asher">
+              <input type="radio" name="serving" id="asher" value="asher">
               <label for="asher">Ашер</label>
-              <input type="radio" name="serving" id="childServer">
+              <input type="radio" name="serving" id="childServer" value="childServer">
               <label for="childServer">Детский служитель</label>
-              <input type="radio" name="serving" id="registrator">
+              <input type="radio" name="serving" id="registrator" value="registrator">
               <label for="registrator">Регистрация</label>
-              <input type="text" placeholder="Ваш ответ" id="">
+              <input type="text" placeholder="Ваш ответ" id="serveOpenAnswer">
           </div>
         </div>
 
@@ -521,18 +521,18 @@
               <span>под присмотром родителей</span>
             </div>
 
-            <input type="checkbox" id="5to7">
-            <label for="5to7">5-7 лет</label>
+            <input type="checkbox" id="from5to7">
+            <label for="from5to7">5-7 лет</label>
             <div class="title_and_input">
               <span>количество детей: </span>
-              <input type="number">
+              <input type="number" id="from5to7childrenCount">
             </div>
 
-            <input type="checkbox" id="8to12">
-            <label for="8to12">8-12 лет</label>
+            <input type="checkbox" id="from8to12">
+            <label for="from8to12">8-12 лет</label>
             <div class="title_and_input">
               <span>количество детей: </span>
-              <input type="number">
+              <input type="number" id="from8to12childrenCount">
             </div>
           </div>
         </div>

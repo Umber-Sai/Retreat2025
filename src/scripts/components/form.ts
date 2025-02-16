@@ -8,10 +8,6 @@ declare global {
     }
 }
 
-
-
-
-
 export class Form {
 
     isValid: boolean = true;
@@ -22,20 +18,20 @@ export class Form {
     iti = intlTelInput(this.phoneInput, {
         loadUtils: () => {
             return new Promise((resolve, reject) => {
-              try {
-                const utils = require('intl-tel-input/build/js/utils.js');
-                resolve(utils);
-              } catch (error) {
-                reject(error);
-              }
+                try {
+                    const utils = require('intl-tel-input/build/js/utils.js');
+                    resolve(utils);
+                } catch (error) {
+                    reject(error);
+                }
             });
-          },
+        },
         initialCountry: "auto",
         geoIpLookup: (success, failure) => {
             fetch("https://ipapi.co/json")
-              .then((res) => res.json())
-              .then((data) => success(data.country_code))
-              .catch(() => console.error("can't get country"));
+                .then((res) => res.json())
+                .then((data) => success(data.country_code))
+                .catch(() => console.error("can't get country"));
         },
         useFullscreenPopup: false,
         separateDialCode: true,
@@ -45,43 +41,49 @@ export class Form {
 
     childrenToggle = document.querySelectorAll('input[name="children"]') as NodeListOf<HTMLInputElement>;
     childrenAccordion = document.querySelector('.form_accordion.children');
+    isChildrenAccordionOpen = false
 
     serveToggle = document.querySelectorAll('input[name="serve"]') as NodeListOf<HTMLInputElement>;
     serveAccordion = document.querySelector('.form_accordion.serve');
-
+    isServeAccordionOpen = false;
 
     constructor() {
-        this.childrenToggle.forEach((btn : HTMLInputElement) => {
+
+        this.childrenToggle.forEach((btn: HTMLInputElement) => {
             btn.onclick = (e) => {
                 const value = (e.target as HTMLInputElement)?.value;
-                if(value === 'open') {
+                if (value === 'open') {
                     this.childrenAccordion?.classList.add('open');
+                    this.isChildrenAccordionOpen = true;
                 } else {
                     this.childrenAccordion?.classList.remove('open');
+                    this.isChildrenAccordionOpen = false;
                 }
             }
         });
 
-        this.serveToggle.forEach((btn : HTMLInputElement) => {
+        this.serveToggle.forEach((btn: HTMLInputElement) => {
             btn.onclick = (e) => {
                 const value = (e.target as HTMLInputElement)?.value;
-                if(value === 'open') {
+                if (value === 'open') {
                     this.serveAccordion?.classList.add('open');
+                    this.isServeAccordionOpen = true;
                 } else {
                     this.serveAccordion?.classList.remove('open');
+                    this.isServeAccordionOpen = false;
                 }
             }
         })
 
         this.formInputs.forEach(item => {
             const input = item.querySelector('input.form_input__input') as HTMLInputElement | null;
-            if(input) {
+            if (input) {
                 input.onfocus = () => {
                     item.classList.remove('no_value');
                     item.classList.remove('invalid');
                 }
             }
-           
+
         });
 
 
@@ -91,25 +93,67 @@ export class Form {
 
 
     validation() {
-        console.log(this.iti.isValidNumber())
         this.isValid = true
         this.formInputs.forEach(item => {
             const input = item.querySelector('input.form_input__input') as HTMLInputElement | null;
-            console.log(item)
             if (input && !input.value) {
                 item.classList.add('no_value');
                 this.isValid = false
-            } 
+            }
         });
-        if(!this.iti.isValidNumber()) {
+        if (!this.iti.isValidNumber()) {
             document.getElementById('phoneFormInput')?.classList.add('invalid')
             this.isValid = false
         }
+        if (!document.querySelector('input.participate_date:checked')) {
+            this.isValid = false;
+            alert(1);
+        }
+
+
+
         if (this.isValid) {
             console.log('passed')
             alert('passed')
         } else {
             console.log('not passed')
+            this.collectData()
         }
+    }
+
+    collectData() {
+
+        const data : any = {
+            firstName: (document.querySelector('input#firstName') as HTMLInputElement)!.value,
+            lastName: (document.querySelector('input#lastName') as HTMLInputElement)!.value,
+            location: (document.querySelector('input#location') as HTMLInputElement)!.value,
+            church: (document.querySelector('input#church') as HTMLInputElement)!.value,
+            phone: this.iti.getNumber(),
+            participateDays: [
+                (document.querySelector('input.participate_date#day22') as HTMLInputElement)!.checked,
+                (document.querySelector('input.participate_date#day23') as HTMLInputElement)!.checked,
+                (document.querySelector('input.participate_date#day24') as HTMLInputElement)!.checked,
+            ],
+            volonteer: false,
+            children : false
+        }
+
+        if (this.isServeAccordionOpen) {
+            const radioValue = document.querySelector('input[name="serving"]:checked') as HTMLInputElement;
+            const textValue = document.querySelector('input#serveOpenAnswer') as HTMLInputElement;
+            if(radioValue) {
+                data.volonteer = radioValue.value + ' | ' + textValue.value
+            }
+        }
+
+        if(this.isChildrenAccordionOpen) {
+            data.children = [
+                (document.querySelector('input#less5') as HTMLInputElement)!.checked,
+                (document.querySelector('input#from5to7') as HTMLInputElement)!.checked ? (document.getElementById('from5to7childrenCount') as HTMLInputElement).value : '',
+                (document.querySelector('input#from8to12') as HTMLInputElement)!.checked ? (document.getElementById('from8to12childrenCount') as HTMLInputElement).value : '',
+            ]
+        }
+
+        console.log(data)
     }
 }

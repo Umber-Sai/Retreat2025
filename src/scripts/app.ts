@@ -13,10 +13,6 @@ class App {
     faqMotherElement : HTMLElement | null = document.getElementById('faq_accordion');
    
     constructor() {
-        
-      
-
-        
         new Header()
         new Form()
         
@@ -84,9 +80,10 @@ class App {
 
 }
 
-window.onload = () => {
+document.onload = () => {
     new App()
 }
+
 
 
 
