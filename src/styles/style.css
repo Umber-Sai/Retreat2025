@@ -1518,6 +1518,30 @@ input[type=number]::-webkit-outer-spin-button {
   opacity: 1;
   pointer-events: auto;
 }
+.registration_form .registration_form_popup_ready .popup_title {
+  font-size: clamp(25px, 7vw, 50px);
+  max-width: 80%;
+  text-align: center;
+  margin: 0 auto;
+}
+.registration_form .registration_form_popup_ready .popup_text {
+  font-weight: 300;
+  font-size: clamp(20px, 3vw, 25px);
+  max-width: 70%;
+  text-align: center;
+}
+.registration_form .registration_form_popup_ready .popup_close {
+  cursor: pointer;
+  width: 40px;
+  aspect-ratio: 1;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.registration_form .registration_form_popup_ready .popup_close svg {
+  width: 100%;
+  height: 100%;
+}
 
 .loader {
   display: inline-flex;

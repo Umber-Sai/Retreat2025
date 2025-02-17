@@ -56,6 +56,10 @@ export class Form {
 
     constructor() {
 
+        document.getElementById('close_popup')!.onclick = () => {
+            this.registrationPopupReady?.classList.remove('open');
+        }
+
         this.childrenToggle.forEach((btn: HTMLInputElement) => {
             btn.onclick = (e) => {
                 const value = (e.target as HTMLInputElement)?.value;
@@ -138,6 +142,7 @@ export class Form {
 
     collectData() {
 
+
         const data : DataType = {
             firstName: (document.querySelector('input#firstName') as HTMLInputElement)!.value,
             lastName: (document.querySelector('input#lastName') as HTMLInputElement)!.value,
@@ -154,11 +159,10 @@ export class Form {
         }
 
         if (this.isServeAccordionOpen) {
-            const radioValue = document.querySelector('input[name="serving"]:checked') as HTMLInputElement;
-            const textValue = document.querySelector('input#serveOpenAnswer') as HTMLInputElement;
-            if(radioValue) {
-                data.volonteer = radioValue.value + ' | ' + textValue.value
-            }
+            const radioBtn = document.querySelector('input[name="serving"]:checked') as HTMLInputElement;
+            const textValue = (document.querySelector('input#serveOpenAnswer') as HTMLInputElement).value;
+            if(radioBtn) data.volonteer = radioBtn.value;
+            if(textValue) data.volonteer += ' | ' + textValue;
         }
 
         if(this.isChildrenAccordionOpen) {
@@ -185,16 +189,26 @@ export class Form {
         console.log('sending')
         console.log(body)
         this.registrationPopupSending?.classList.add('open')
-        fetch(scriptURL + body , {method: 'POST'}).then(a => {
+        fetch(scriptURL + body , {method: 'POST'})
+            .then(a => {
             this.registrationPopupReady?.classList.add('open');
             setTimeout(() => {
                 this.form!.reset();
-                this.registrationPopupSending?.classList.remove('open')
-            }, 1000)
-            setTimeout(() => {
-                this.registrationPopupReady?.classList.remove('open')
-            }, 3000)
+                this.registrationPopupSending?.classList.remove('open');
+                this.childrenAccordion?.classList.remove('open');
+                this.serveAccordion?.classList.remove('open');
+                this.isServeAccordionOpen = false;
+                this.isChildrenAccordionOpen = false;
+
+                // window.open('https://t.me/+Nub4GDtYtlI4YmJi');
+            }, 2000)
+            // setTimeout(() => {
+            //     this.registrationPopupReady?.classList.remove('open')
+            // }, 3000)
             
+            }).catch(() => {
+                this.registrationPopupSending?.classList.remove('open');
+                alert('Что-то пошло не так, повторите попытку позже :(')
         })
     }
 }
