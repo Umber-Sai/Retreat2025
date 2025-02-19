@@ -179,7 +179,8 @@ export class Form {
 
     sending(data : any) {
         
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzOEqfIyOzap6HbSD0O5mXwNLlw-egXEEZidRPa9Etel0rnVGChGaiGQlJDUrCd0A73mA/exec'
+        // const scriptURL = 'https://script.google.com/macros/s/AKfycbzOEqfIyOzap6HbSD0O5mXwNLlw-egXEEZidRPa9Etel0rnVGChGaiGQlJDUrCd0A73mA/exec'
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw72NRTAAgcoZAZxe9uOn41q2g_bJs9pgZTXv0mnlVxKoyQH2V2bgqu8ty8dQTWLMSw9A/exec'
         let body = `?firstName=${data.firstName}&lastName=${data.lastName}&location=${data.location}&church=${data.church}&phone=${data.phone}&22may=${data.participateDays[0]}&23may=${data.participateDays[1]}&24may=${data.participateDays[2]}&service=${data.volonteer}`
         if(data.children) {
             body = body + `&less5=${data.children[0]}&from5to7=${data.children[1]}&from8to12=${data.children[2]}`
