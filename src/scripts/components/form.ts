@@ -32,7 +32,7 @@ export class Form {
         },
         initialCountry: "auto",
         geoIpLookup: (success, failure) => {
-            fetch("https://ipapi.co/json")
+            fetch("https://ipwho.is/")
                 .then((res) => res.json())
                 .then((data) => success(data.country_code))
                 .catch(() => console.error("can't get country"));
@@ -126,8 +126,8 @@ export class Form {
             this.isValid = false
         }
         if (!document.querySelector('input.participate_date:checked')) {
-            this.isValid = false;
             this.daysTitle?.classList.add('invalid')
+            this.isValid = false;
         }
 
 
@@ -137,12 +137,11 @@ export class Form {
             this.collectData()
         } else {
             console.log('not passed')
+            this.form.scrollIntoView({behavior : 'smooth'});
         }
     }
 
     collectData() {
-
-
         const data : DataType = {
             firstName: (document.querySelector('input#firstName') as HTMLInputElement)!.value,
             lastName: (document.querySelector('input#lastName') as HTMLInputElement)!.value,
@@ -179,7 +178,6 @@ export class Form {
 
     sending(data : any) {
         
-        // const scriptURL = 'https://script.google.com/macros/s/AKfycbzOEqfIyOzap6HbSD0O5mXwNLlw-egXEEZidRPa9Etel0rnVGChGaiGQlJDUrCd0A73mA/exec'
         const scriptURL = 'https://script.google.com/macros/s/AKfycbw72NRTAAgcoZAZxe9uOn41q2g_bJs9pgZTXv0mnlVxKoyQH2V2bgqu8ty8dQTWLMSw9A/exec'
         let body = `?firstName=${data.firstName}&lastName=${data.lastName}&location=${data.location}&church=${data.church}&phone=${data.phone}&22may=${data.participateDays[0]}&23may=${data.participateDays[1]}&24may=${data.participateDays[2]}&service=${data.volonteer}`
         if(data.children) {
@@ -189,7 +187,8 @@ export class Form {
 
         console.log('sending')
         console.log(body)
-        this.registrationPopupSending?.classList.add('open')
+        this.registrationPopupSending?.classList.add('open');
+        this.form.scrollIntoView({behavior: "smooth", block : "center"})
         fetch(scriptURL + body , {method: 'POST'})
             .then(a => {
             this.registrationPopupReady?.classList.add('open');
