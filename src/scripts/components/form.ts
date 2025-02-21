@@ -86,7 +86,6 @@ export class Form {
             }
         })
 
-        console.log(this.daysButtons)
 
         this.daysButtons.forEach(item => {  
             item.onclick = () => {
@@ -172,7 +171,6 @@ export class Form {
             ]
         }
 
-        console.log(data)
         this.sending(data)
     }
 
@@ -184,9 +182,6 @@ export class Form {
             body = body + `&less5=${data.children[0]}&from5to7=${data.children[1]}&from8to12=${data.children[2]}`
         }
 
-
-        console.log('sending')
-        console.log(body)
         this.registrationPopupSending?.classList.add('open');
         this.form.scrollIntoView({behavior: "smooth", block : "center"})
         fetch(scriptURL + body , {method: 'POST'})

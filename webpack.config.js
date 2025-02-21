@@ -28,7 +28,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: 'index.html',
-      inject: 'body',
+      // inject: 'body',
     }),
   ],
   devServer: {
