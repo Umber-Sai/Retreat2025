@@ -70,6 +70,17 @@
             text-align: center;
         }
 
+        .popup_actions {
+            a {
+                display: block;
+                width: 200px;
+                aspect-ratio: 1;
+                svg {
+                    width: 100%;
+                }
+            }
+        }
+
         .popup_close {
             cursor: pointer;
             width: 40px;

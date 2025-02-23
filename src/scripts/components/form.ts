@@ -188,6 +188,8 @@ export class Form {
             .then(a => {
             this.registrationPopupReady?.classList.add('open');
             setTimeout(() => {
+                window.open('https://t.me/+Nub4GDtYtlI4YmJi');
+                
                 this.form!.reset();
                 this.registrationPopupSending?.classList.remove('open');
                 this.childrenAccordion?.classList.remove('open');
@@ -195,7 +197,6 @@ export class Form {
                 this.isServeAccordionOpen = false;
                 this.isChildrenAccordionOpen = false;
 
-                // window.open('https://t.me/+Nub4GDtYtlI4YmJi');
             }, 2000)
             // setTimeout(() => {
             //     this.registrationPopupReady?.classList.remove('open')
