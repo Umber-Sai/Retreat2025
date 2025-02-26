@@ -1,3 +1,4 @@
+import { da } from "intl-tel-input/i18n";
 import { Common } from "./common";
 
 
@@ -7,13 +8,24 @@ export class Header extends Common {
     burgerChekbox: HTMLInputElement | null = document.getElementById('burger') as HTMLInputElement;
     menuElement : HTMLElement | null =  document.getElementById('menu');
 
-    elements: { element: HTMLElement; data: unknown; }[] = [];
-    //  = [
-    //     {
-    //         element : document.querySelector('#menu to_speakers') as HTMLElement,
-    //         data : 
-    //     }
-    // ];
+    elements: { element: HTMLElement; data: {"Ru" : string, "En" : string}; }[] = [
+        {
+            element : document.querySelector('#menu .to_speakers') as HTMLElement,
+            data : {"En" : "speakers", "Ru" : "Спикеры"}
+        },
+        {
+            element : document.querySelector('#menu .to_about') as HTMLElement,
+            data : {"En" : "about", "Ru" : "о ретрите"}
+        },
+        {
+            element : document.querySelector('#menu .to_conditions') as HTMLElement,
+            data : {"En" : "Conditions", "Ru" : "Условия участия"}
+        },
+        {
+            element : document.querySelector('#menu .to_faq') as HTMLElement,
+            data : {"En" : "F.A.Q.", "Ru" : "Частые вопросы"}
+        },
+    ];
 
     constructor() {
         super()
@@ -39,6 +51,8 @@ export class Header extends Common {
         };
 
         window.addEventListener('scroll', () => requestAnimationFrame(handleScroll));
+
+        this.changeLanguage("Ru")
     }
 
     closeMenu () {
@@ -49,11 +63,13 @@ export class Header extends Common {
         }
     }
 
-    fillElement(element: HTMLElement, data: unknown, language: "Ru" | "En"): void {
-        
+    fillElement(element: HTMLElement, data: {"Ru" : string, "En" : string}, language: "Ru" | "En"): void {
+        element.innerText = data[language]
     }
 
     changeLanguage(lang: "Ru" | "En"): void {
-        
+        this.elements.forEach(item => {
+            this.fillElement(item.element, item.data, lang)
+        })
     }
 }
