@@ -3,6 +3,10 @@
         "Ru" : "Условия участия:",
         "En" : "Participation Conditions:"
     },
+    "button" : {
+         "Ru" : "Регистрация",
+        "En" : "registration"
+    },
     "conditions" : [
         {
             "Ru" : {

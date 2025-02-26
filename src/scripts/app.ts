@@ -6,6 +6,8 @@ import { Scroller } from "./components/scroller";
 import { Faq } from "./components/faq";
 import { Speakers } from "./components/speakers";
 import { Main } from "./components/main";
+import { About } from "./components/about";
+import { Conditions } from "./components/conditions";
 
 
 class App {
@@ -16,7 +18,9 @@ class App {
     classes = [
         new Header(),
         new Main(),
+        new About(),
         new Speakers(this.language),
+        new Conditions(),
         new Faq(this.language),
         new Form()
     ]

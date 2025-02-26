@@ -1,12 +1,19 @@
 import { Common } from "./common";
 
 
+
 export class Header extends Common {
     header: HTMLElement | null = document.querySelector('.header');
     burgerChekbox: HTMLInputElement | null = document.getElementById('burger') as HTMLInputElement;
     menuElement : HTMLElement | null =  document.getElementById('menu');
 
     elements: { element: HTMLElement; data: unknown; }[] = [];
+    //  = [
+    //     {
+    //         element : document.querySelector('#menu to_speakers') as HTMLElement,
+    //         data : 
+    //     }
+    // ];
 
     constructor() {
         super()
