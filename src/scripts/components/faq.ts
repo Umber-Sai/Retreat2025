@@ -8,31 +8,47 @@ export class Faq extends Common {
     language : 'Ru' | 'En';
     url = './templates/accordion.html';
     motherElement : HTMLElement | null = document.getElementById('faq_accordion');
+    titleElement : HTMLElement = document.getElementById('faq_title') as HTMLElement;
+    elements : {element : HTMLElement, data : FaqType}[] = [] 
 
     constructor (langauge : 'Ru' | 'En') {
         super();
         this.language = langauge;
+        this.titleElement.innerText = faq.title[this.language];
         this.faqFiller();
     }
 
     async faqFiller(): Promise<void> {
         const template : string = await this.getTemplate('./templates/accordion.html');
-        faq.faq.forEach((element: FaqType) => {
-            const section: HTMLElement = document.createElement('div');
-            section.innerHTML = template;
+        faq.faq.forEach((data: FaqType) => {
+            const element: HTMLElement = document.createElement('div');
+            element.innerHTML = template;
 
-            section.querySelector('input')?.setAttribute('id', 'section' + element.id);
-            section.querySelector('label')?.setAttribute('for', 'section' + element.id);
+            element.querySelector('input')?.setAttribute('id', 'section' + data.id);
+            element.querySelector('label')?.setAttribute('for', 'section' + data.id);
 
-            const head: HTMLElement | null = section.querySelector('.accordion_section label span');
-            if (head) {
-                head.innerText = element[this.language].head;
-            }
-            const body: HTMLElement | null = section.querySelector('.section_body');
-            if (body) {
-                body.innerHTML = element[this.language].body;
-            }
-            this.motherElement?.appendChild(section) 
+            this.fillElement(element, data, this.language);
+
+            this.elements.push({element : element, data : data})
+            this.motherElement?.appendChild(element);
         });
+    }
+
+    fillElement (element : HTMLElement, data : FaqType, language : 'Ru' | 'En') {
+        const head: HTMLElement | null = element.querySelector('.accordion_section label span');
+        if (head) {
+            head.innerText = data[language].head;
+        }
+        const body: HTMLElement | null = element.querySelector('.section_body');
+        if (body) {
+            body.innerHTML = data[language].body;
+        }
+    }
+
+    changeLanguage(lang : 'Ru' | 'En') : void {
+        this.titleElement.innerText = faq.title[lang];
+        this.elements.forEach(props => {
+            this.fillElement(props.element, props.data, lang)
+        })
     }
 }

@@ -1,69 +1,75 @@
 {
+    
+    
+    "title" : {
+        "Ru" : "вопросы",
+        "En" : "F.A.Q."
+    },
     "faq": [
         {
-        "id": 1,
-        "Ru": {
-            "head": "Где будет проходить ретрит?",
-            "body": "Haifa, Haitstadyon Street 25 <br><a href='https://maps.app.goo.gl/PxSjBtB6xsurEfPH6' target='_blank'>Google Maps</a> <br><a href='https://waze.com/ul/hsvbftz2dt' target='_blank'>Waze</a>"
+            "id": 1,
+            "Ru": {
+                "head": "Где будет проходить ретрит?",
+                "body": "Haifa, Haitstadyon Street 25 <br><a href='https://maps.app.goo.gl/PxSjBtB6xsurEfPH6' target='_blank'>Google Maps</a> <br><a href='https://waze.com/ul/hsvbftz2dt' target='_blank'>Waze</a>"
             },
-        "En": {
-            "head": "",
-            "body": ""
+            "En": {
+                "head": "Where will the retreat take place?",
+                "body": "Haifa, Haitstadyon Street 25 <br><a href='https://maps.app.goo.gl/PxSjBtB6xsurEfPH6' target='_blank'>Google Maps</a> <br><a href='https://waze.com/ul/hsvbftz2dt' target='_blank'>Waze</a>"
             }
         },
         {
-        "id": 2,
-        "Ru": {
-            "head": "Как добраться на ретрит?",
-            "body": "В четверг и пятницу утром общественный транспорт ходит без ограничений — можно воспользоваться приложением Moovit, чтобы проложить маршрут. В пятницу вечером и в субботу транспорт не работает, и добраться можно будет только своим ходом. Если вы являетесь частью какой-то общины, то можно организовать подвозку своими силами."
+            "id": 2,
+            "Ru": {
+                "head": "Как добраться на ретрит?",
+                "body": "В четверг и пятницу утром общественный транспорт ходит без ограничений — можно воспользоваться приложением Moovit, чтобы проложить маршрут. В пятницу вечером и в субботу транспорт не работает, и добраться можно будет только своим ходом. Если вы являетесь частью какой-то общины, то можно организовать подвозку своими силами."
             },
-        "En": {
-            "head": "",
-            "body": ""
+            "En": {
+                "head": "How can I get to the retreat?",
+                "body": "On Thursday and Friday morning public transportation operates without restrictions—use the Moovit app to plan your route. On Friday evening and Saturday, public transport does not operate, so you will need to arrange your own transportation. If you are part of  some  congregation, consider organizing a carpool."
             }
         },
         {
-        "id": 3,
-        "Ru": {
-            "head": "Есть ли место для парковки?",
-            "body": "Через дорогу от здания, где будет проходить ретрит, есть много мест для парковки."
+            "id": 3,
+            "Ru": {
+                "head": "Есть ли место для парковки?",
+                "body": "Через дорогу от здания, где будет проходить ретрит, есть много мест для парковки."
             },
-        "En": {
-            "head": "",
-            "body": ""
+            "En": {
+                "head": "Is there parking available?",
+                "body": "There are plenty of parking spots across the street and in front of the retreat venue."
             }
         },
         {
-        "id": 4,
-        "Ru": {
-            "head": "Где можно остановиться, если я живу далеко от места ретрита?",
-            "body": "Если у вас не получается самостоятельно найти место проживания на время ретрита, вы можете обратиться к нам за помощью, заполнив форму. Мы постараемся вам помочь. <br><a href='https://forms.gle/3ts311ffJ5eexqQ5A' target='_blank'>Ссылка на гугл форму</a>"
+            "id": 4,
+            "Ru": {
+                "head": "Где можно остановиться, если я живу далеко от места ретрита?",
+                "body": "Если у вас не получается самостоятельно найти место проживания на время ретрита, вы можете обратиться к нам за помощью, заполнив форму. Мы постараемся вам помочь. <br><a href='https://forms.gle/3ts311ffJ5eexqQ5A' target='_blank'>Ссылка на гугл форму</a>"
             },
-        "En": {
-            "head": "",
-            "body": ""
+            "En": {
+                "head": "Where can I stay if I live far from the retreat location?",
+                "body": "If you are unable to find accommodation on your own, you can request assistance by filling out a form—we will do our best to help. <br><a href='https://forms.gle/3ts311ffJ5eexqQ5A' target='_blank'>Google Form Link</a>"
             }
         },
         {
-        "id": 5,
-        "Ru": {
-            "head": "Где я могу покушать во время ретрита?",
-            "body": "В пешей доступности от места проведения ретрита есть супермаркет “Кешет Таамим”, там можно приобрести готовую еду. Также вы можете взять еду с собой или заказать доставку."
+            "id": 5,
+            "Ru": {
+                "head": "Где я могу покушать во время ретрита?",
+                "body": "В пешей доступности от места проведения ретрита есть супермаркет “Кешет Таамим”, там можно приобрести готовую еду. Также вы можете взять еду с собой или заказать доставку."
             },
-        "En": {
-            "head": "",
-            "body": ""
+            "En": {
+                "head": "Where can I eat during the retreat?",
+                "body": "Within walking distance of the retreat venue there is a supermarket called Keshet Ta’amim, where you can buy ready-made food. You can also bring your own food or order delivery."
             }
         },
         {
-        "id": 6,
-        "Ru": {
-            "head": "Можно ли взять с собой ребенка?",
-            "body": "Во время служений ретрита планируется детская программа для детей 5-12 лет. Дети до 5 лет должны быть под присмотром родителей. Для родителей с детьми младше 5 лет будет отдельная комната с онлайн трансляцией."
+            "id": 6,
+            "Ru": {
+                "head": "Можно ли взять с собой ребенка?",
+                "body": "Во время служений ретрита планируется детская программа для детей 5-12 лет. Дети до 5 лет должны быть под присмотром родителей. Для родителей с детьми младше 5 лет будет отдельная комната с онлайн трансляцией."
             },
-        "En": {
-            "head": "",
-            "body": ""
+            "En": {
+                "head": "Can I bring my child?",
+                "body": "There will be a children’s program for kids aged 5-12 during the retreat services. Children under 5 years old must remain under parental supervision. A separate room with a live broadcast will be available for parents with younger children."
             }
         }
     ]

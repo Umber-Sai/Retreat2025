@@ -11,7 +11,6 @@
             head: string,
             body: string
         }
-        link? : string
     }
 
 

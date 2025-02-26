@@ -3,7 +3,7 @@ export class Common {
 
     }
 
-    public async getTemplate(url: string): Promise<string> {
+    protected async getTemplate(url: string): Promise<string> {
         return await fetch(url)
             .then(res => res.text())
             .then(html => {
