@@ -5,6 +5,7 @@ import { Header } from "./components/header";
 import { Scroller } from "./components/scroller";
 import { Faq } from "./components/faq";
 import { Speakers } from "./components/speakers";
+import { Main } from "./components/main";
 
 
 class App {
@@ -12,10 +13,13 @@ class App {
     language : 'Ru' | 'En' = 'Ru';
     langBtn = document.querySelectorAll('input[name=language]') as NodeListOf<HTMLInputElement>;
 
-    header = new Header();
-    speakers = new Speakers(this.language)
-    faq = new Faq(this.language);
-    form = new Form()  
+    classes = [
+        new Header(),
+        new Main(),
+        new Speakers(this.language),
+        new Faq(this.language),
+        new Form()
+    ]
 
     constructor() {
         new Scroller();
@@ -32,7 +36,9 @@ class App {
     }
 
     changeLanguage() {
-        this.faq.changeLanguage(this.language)
+        this.classes.forEach(element => {
+            element.changeLanguage(this.language)
+        });
     }
 }
 

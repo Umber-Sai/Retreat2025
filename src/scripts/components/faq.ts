@@ -1,24 +1,24 @@
-import { Common } from "./common";
+import { Dynamic } from "./common";
 import faq from '../content/faq.json';
 import { FaqType } from "../types/faq.type";
 
 
-export class Faq extends Common {
+export class Faq extends Dynamic {
 
     language : 'Ru' | 'En';
     url = './templates/accordion.html';
     motherElement : HTMLElement | null = document.getElementById('faq_accordion');
     titleElement : HTMLElement = document.getElementById('faq_title') as HTMLElement;
-    elements : {element : HTMLElement, data : FaqType}[] = [] 
+    elements : {element : HTMLElement, data : FaqType}[] = [];
 
     constructor (langauge : 'Ru' | 'En') {
         super();
         this.language = langauge;
         this.titleElement.innerText = faq.title[this.language];
-        this.faqFiller();
+        this.createElenments();
     }
 
-    async faqFiller(): Promise<void> {
+    async createElenments(): Promise<void> {
         const template : string = await this.getTemplate('./templates/accordion.html');
         faq.faq.forEach((data: FaqType) => {
             const element: HTMLElement = document.createElement('div');

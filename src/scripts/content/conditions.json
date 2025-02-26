@@ -1,0 +1,48 @@
+{
+    "title" : {
+        "Ru" : "Условия участия:",
+        "En" : "Participation Conditions:"
+    },
+    "conditions" : [
+        {
+            "Ru" : {
+                "title" : "Обязательная регистрация",
+                "text" : "Внимание! Для участия в ретрите команда имеет право попросить рекомендацию вашего пастора."
+            },
+            "En" : {
+                "title" : "Registration is mandatory.",
+                "text" : "Important! To ensure your participation in the retreat, the team has the right to request a recommendation from your pastor."
+            }
+        },
+        {
+            "Ru" : {
+                "title" : "Бесплатно",
+                "text" : "Будет возможность поучаствовать в цдаке во время служения."
+            },
+            "En" : {
+                "title" : "Free of charge",
+                "text" : "There will be an opportunity to contribute to Tzedakah during the service."
+            }
+        },
+        {
+            "Ru" : {
+                "title" : "Телеграмм канал",
+                "text" : "После регистрации вам будет предложено подписаться на телеграм-канал ретрита, где будет публиковаться актуальная информация."
+            },
+            "En" : {
+                "title" : "Telegram Channel",
+                "text" : "After registration, you will be invited to join the retreat's Telegram channel, where all the latest updates will be posted."
+            }
+        },
+        {
+            "Ru" : {
+                "title" : "Kosher look",
+                "text" : "Закрытая одежда свободного кроя."
+            },
+            "En" : {
+                "title" : "Kosher look",
+                "text" : "Modest, loose-fitting clothing is required"
+            }
+        }
+    ]
+}

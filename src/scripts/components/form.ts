@@ -2,6 +2,7 @@
 
 import intlTelInput from "intl-tel-input";
 import { DataType } from "../types/data.type";
+import { Common } from "./common";
 
 declare global {
     interface Window {
@@ -9,7 +10,7 @@ declare global {
     }
 }
 
-export class Form {
+export class Form extends Common {
 
     isValid: boolean = true;
     form = document.getElementById('registrationForm') as HTMLFormElement;
@@ -43,6 +44,8 @@ export class Form {
         fixDropdownWidth: true,
     });
 
+    elements: { element: HTMLElement; data: unknown; }[] = [];
+
     childrenToggle = document.querySelectorAll('input[name="children"]') as NodeListOf<HTMLInputElement>;
     childrenAccordion = document.querySelector('.form_accordion.children');
     isChildrenAccordionOpen = false
@@ -55,7 +58,7 @@ export class Form {
     registrationPopupReady = document.getElementById('registration_form_popup_ready');
 
     constructor() {
-
+        super()
         document.getElementById('close_popup')!.onclick = () => {
             this.registrationPopupReady?.classList.remove('open');
         }
@@ -206,5 +209,13 @@ export class Form {
                 this.registrationPopupSending?.classList.remove('open');
                 alert('Что-то пошло не так, повторите попытку позже :(')
         })
+    }
+
+    fillElement(element: HTMLElement, data: unknown, language: "Ru" | "En"): void {
+        
+    }
+
+    changeLanguage(lang: "Ru" | "En"): void {
+        
     }
 }

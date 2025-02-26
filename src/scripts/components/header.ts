@@ -1,11 +1,15 @@
+import { Common } from "./common";
 
 
-export class Header {
+export class Header extends Common {
     header: HTMLElement | null = document.querySelector('.header');
     burgerChekbox: HTMLInputElement | null = document.getElementById('burger') as HTMLInputElement;
     menuElement : HTMLElement | null =  document.getElementById('menu');
 
+    elements: { element: HTMLElement; data: unknown; }[] = [];
+
     constructor() {
+        super()
         if(!this.header) {
             console.error('header not found');
             return
@@ -36,5 +40,13 @@ export class Header {
         } else {
             console.error('burgerChekbox not found')
         }
+    }
+
+    fillElement(element: HTMLElement, data: unknown, language: "Ru" | "En"): void {
+        
+    }
+
+    changeLanguage(lang: "Ru" | "En"): void {
+        
     }
 }

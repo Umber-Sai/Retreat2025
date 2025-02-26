@@ -1852,6 +1852,7 @@ input[type=number]::-webkit-outer-spin-button {
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+  cursor: pointer;
   padding-bottom: 10px;
 }
 .faq .container .faq_accordion .accordion_section .section_head span {
