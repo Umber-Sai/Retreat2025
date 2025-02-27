@@ -3,6 +3,8 @@
 import intlTelInput from "intl-tel-input";
 import { DataType } from "../types/data.type";
 import { Common } from "./common";
+import { FormElementsDataType } from "../types/formElements.type";
+import form from "../content/form.json"
 
 declare global {
     interface Window {
@@ -13,14 +15,11 @@ declare global {
 export class Form extends Common {
 
     isValid: boolean = true;
-    form = document.getElementById('registrationForm') as HTMLFormElement;
-    popup: HTMLElement | null = document.getElementById('formPopup')
-    formInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('.form_input');
-    daysButtons: NodeListOf<HTMLInputElement> = document.querySelectorAll('input.participate_date');
-    submitFormButton: HTMLElement | null = document.getElementById('submitFormButton');
-    phoneInput = document.querySelector("#phone") as HTMLInputElement;
-    daysTitle = document.getElementById('days_title');
-    iti = intlTelInput(this.phoneInput, {
+
+    serviceAccordion = new ToggleAccordion('service');
+    childrenAccordion = new ToggleAccordion('children');
+
+    iti = intlTelInput(document.querySelector("#phone")!, {
         loadUtils: () => {
             return new Promise((resolve, reject) => {
                 try {
@@ -44,51 +43,67 @@ export class Form extends Common {
         fixDropdownWidth: true,
     });
 
-    elements: { element: HTMLElement; data: unknown; }[] = [];
 
-    childrenToggle = document.querySelectorAll('input[name="children"]') as NodeListOf<HTMLInputElement>;
-    childrenAccordion = document.querySelector('.form_accordion.children');
-    isChildrenAccordionOpen = false
 
-    serveToggle = document.querySelectorAll('input[name="serve"]') as NodeListOf<HTMLInputElement>;
-    serveAccordion = document.querySelector('.form_accordion.serve');
-    isServeAccordionOpen = false;
+
+    form = document.getElementById('registrationForm') as HTMLFormElement;
+    popup: HTMLElement | null = document.getElementById('formPopup')
+    formInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('.form_input');
+    daysButtons: NodeListOf<HTMLInputElement> = document.querySelectorAll('input.participate_date');
+    daysTitle = document.getElementById('days_title');
+    
+    
+    submitFormButton: HTMLElement | null = document.getElementById('submitFormButton');
+    titleElement : HTMLElement = document.querySelector('.registration_title') as HTMLElement;
+    serviceOpenAnswer : HTMLInputElement = document.getElementById('serveOpenAnswer') as HTMLInputElement;
+    elements: { element: HTMLElement; data: any; }[] =
+     [
+        {
+            element : document.querySelector('.form_input.firstName') as HTMLElement,
+            data : form.firstName
+        },
+        {
+            element : document.querySelector('.form_input.lastName') as HTMLElement,
+            data : form.lastName
+        },
+        {
+            element : document.querySelector('.form_input.location') as HTMLElement,
+            data : form.location
+        },
+        {
+            element : document.querySelector('.form_input.church') as HTMLElement,
+            data : form.church
+        },
+        {
+            element : document.querySelector('.form_input#phoneFormInput') as HTMLElement,
+            data : form.phone
+        },
+
+        {
+            element : document.querySelector('.form_input.days') as HTMLElement,
+            data : form.days
+        },
+        {
+            element : document.querySelector('.form_input.service') as HTMLElement,
+            data : form.service
+        },
+        {
+            element : document.querySelector('.form_input.children') as HTMLElement,
+            data : form.children
+        }
+    ];
+
+
 
     registrationPopupSending = document.getElementById('registration_form_popup_sending');
     registrationPopupReady = document.getElementById('registration_form_popup_ready');
 
     constructor() {
         super()
+
         document.getElementById('close_popup')!.onclick = () => {
             this.registrationPopupReady?.classList.remove('open');
         }
-
-        this.childrenToggle.forEach((btn: HTMLInputElement) => {
-            btn.onclick = (e) => {
-                const value = (e.target as HTMLInputElement)?.value;
-                if (value === 'open') {
-                    this.childrenAccordion?.classList.add('open');
-                    this.isChildrenAccordionOpen = true;
-                } else {
-                    this.childrenAccordion?.classList.remove('open');
-                    this.isChildrenAccordionOpen = false;
-                }
-            }
-        });
-
-        this.serveToggle.forEach((btn: HTMLInputElement) => {
-            btn.onclick = (e) => {
-                const value = (e.target as HTMLInputElement)?.value;
-                if (value === 'open') {
-                    this.serveAccordion?.classList.add('open');
-                    this.isServeAccordionOpen = true;
-                } else {
-                    this.serveAccordion?.classList.remove('open');
-                    this.isServeAccordionOpen = false;
-                }
-            }
-        })
-
 
         this.daysButtons.forEach(item => {  
             item.onclick = () => {
@@ -113,6 +128,18 @@ export class Form extends Common {
 
     }
 
+    changeLanguage(lang: "Ru" | "En"): void {
+        this.titleElement.innerText = form.title[lang];
+        this.submitFormButton!.innerText = form.button[lang];
+        this.serviceOpenAnswer.placeholder = form.placeholder[lang];
+
+        this.elements.forEach(item => {
+            Object.keys(item.data).forEach(key => {
+                const el = item.element.querySelector('.' + key);
+                if (el) el.innerHTML = item.data[key][lang]
+            })
+        })
+    }
 
     validation() {
         this.isValid = true
@@ -159,14 +186,14 @@ export class Form extends Common {
             children : false
         }
 
-        if (this.isServeAccordionOpen) {
+        if (this.serviceAccordion.isOpen) {
             const radioBtn = document.querySelector('input[name="serving"]:checked') as HTMLInputElement;
             const textValue = (document.querySelector('input#serveOpenAnswer') as HTMLInputElement).value;
             if(radioBtn) data.volonteer = radioBtn.value;
             if(textValue) data.volonteer += ' | ' + textValue;
         }
 
-        if(this.isChildrenAccordionOpen) {
+        if(this.childrenAccordion.isOpen) {
             data.children = [
                 (document.querySelector('input#less5') as HTMLInputElement)!.checked,
                 (document.querySelector('input#from5to7') as HTMLInputElement)!.checked ? (document.getElementById('from5to7childrenCount') as HTMLInputElement).value : '',
@@ -195,10 +222,6 @@ export class Form extends Common {
                 
                 this.form!.reset();
                 this.registrationPopupSending?.classList.remove('open');
-                this.childrenAccordion?.classList.remove('open');
-                this.serveAccordion?.classList.remove('open');
-                this.isServeAccordionOpen = false;
-                this.isChildrenAccordionOpen = false;
 
             }, 2000)
             // setTimeout(() => {
@@ -215,7 +238,38 @@ export class Form extends Common {
         
     }
 
-    changeLanguage(lang: "Ru" | "En"): void {
-        
+ 
+}
+
+
+
+class ToggleAccordion {
+
+    isOpen : boolean = false;
+
+    private motherElement : HTMLElement;
+    private openBtn : HTMLInputElement;
+    private closeBtn : HTMLInputElement;
+
+    constructor (classsAccordion : string) {
+        this.motherElement = document.querySelector('.form_accordion.' + classsAccordion) as HTMLElement;
+        this.openBtn = this.motherElement.querySelector('input.open') as HTMLInputElement;
+        this.closeBtn = this.motherElement.querySelector('input.close') as HTMLInputElement;
+
+        if(this.openBtn.checked) this.accordionEngine(true);
+
+        this.openBtn.addEventListener('click', () => this.accordionEngine(true))
+        this.closeBtn.addEventListener('click', () => this.accordionEngine(false))
     }
+
+    accordionEngine (status : boolean) : void {
+        if(status) {
+            this.motherElement.classList.add('open');
+            this.isOpen = true;
+        } else {
+            this.motherElement.classList.remove('open');
+            this.isOpen = false;
+        }
+    }
+
 }

@@ -1,0 +1,142 @@
+{
+    "title" : {
+        "Ru" : "Регистрация",
+        "En" : "Registration Form"
+    },
+    "placeholder" : {
+        "Ru" : "Ваш ответ",
+        "En" : "Your answer"
+    },
+    "button" : {
+        "Ru" : "Отправить",
+        "En" : "Submit"
+    },
+    "firstName": {
+        "input_label": {
+            "Ru": "Имя",
+            "En": "First Name"
+        },
+        "enter_value": {
+            "Ru": "Заполните поле",
+            "En": "Fill in the field"
+        }
+    },
+    "lastName": {
+        "input_label": {
+            "Ru": "Фамилия",
+            "En": "Last Name"
+        },
+        "enter_value": {
+            "Ru": "Заполните поле",
+            "En": "Fill in the field"
+        }
+    },
+    "location": {
+        "input_label": {
+            "Ru": "Город / Страна",
+            "En": "City / Country"
+        },
+        "enter_value": {
+            "Ru": "Заполните поле",
+            "En": "Fill in the field"
+        }
+    },
+    "church": {
+        "input_label": {
+            "Ru": "Община / Церков",
+            "En": "Community / Church"
+        },
+        "enter_value": {
+            "Ru": "Заполните поле",
+            "En": "Fill in the field"
+        }
+    },
+    "phone": {
+        "change_value": {
+            "Ru": "Неверный номер",
+            "En": "Wrong number"
+        }
+    },
+    "days" : {
+        "form_input_title" : {
+            "Ru" : "Дни моего участия:",
+            "En" : "Days I will attend:"
+        },
+        "label_d22" : {
+            "Ru" : "22 мая",
+            "En" : "May 22"
+        },
+        "label_d23" : {
+            "Ru" : "23 мая",
+            "En" : "May 23"
+        },
+        "label_d24" : {
+            "Ru" : "24 мая",
+            "En" : "May 24"
+        }
+    },
+    "service" : {
+        "form_input_title" : {
+            "Ru" : "Я хочу послужить на Ретрите:",
+            "En" : "I want to serve at the retreat:"
+        },
+        "toggle_label_no" : {
+            "Ru" : "Нет",
+            "En" : "No"
+        },
+        "toggle_label_yes" : {
+            "Ru" : "Да",
+            "En" : "Yes"
+        },
+        "label_asher" : {
+            "Ru" : "Ашер",
+            "En" : "???"
+        },
+        "label_childService" : {
+            "Ru" : "Детский служитель",
+            "En" : "???"
+        },
+        "label_registrator" : {
+            "Ru" : "Регистрация",
+            "En" : "???"
+        }
+    },
+    "children" : {
+        "form_input_title" : {
+            "Ru" : "Со мной будут дети:",
+            "En" : "I will bring children with me:"
+        },
+        "toggle_label_no" : {
+            "Ru" : "Нет",
+            "En" : "No"
+        },
+        "toggle_label_yes" : {
+            "Ru" : "Да",
+            "En" : "Yes"
+        },
+        "less5_label" : {
+            "Ru" : "до 5 лет",
+            "En" : "???"
+        },
+        "from5to7_label" : {
+            "Ru" : "5-7 лет",
+            "En" : "age 5-7"
+        },
+        "from8to12_label" : {
+            "Ru" : "8-12 лет",
+            "En" : "age 8-12"
+        },
+        "less5_span" : {
+            "Ru" : "под присмотром родителей",
+            "En" : "???"
+        },
+        "from5to7_span" : {
+            "Ru" : "количество детей: ",
+            "En" : "???"
+        },
+        "from8to12_span" : {
+            "Ru" : "количество детей: ",
+            "En" : "???"
+        }
+    }
+}

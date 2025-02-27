@@ -460,39 +460,35 @@
 
       <form class="registration_form" id="registrationForm">
 
-        <div class="form_input">
+        <div class="form_input firstName">
           <input class="form_input__input" type="text" id="firstName" placeholder=" " required>
           <label for="firstName" class="input_label">Имя</label>
           <div class="input_errors">
             <div class="enter_value">Заполните поле</div>
-            <div class="change_value">Неверные символы</div>
           </div>
         </div>
 
-        <div class="form_input">
+        <div class="form_input lastName">
           <input class="form_input__input" type="text" id="lastName" placeholder=" " required>
           <label for="lastName" class="input_label">Фамилия</label>
           <div class="input_errors">
             <div class="enter_value">Заполните поле</div>
-            <div class="change_value">Неверные символы</div>
           </div>
         </div>
 
-        <div class="form_input">
+        <div class="form_input location">
           <input class="form_input__input" type="text" id="location" placeholder=" " required>
           <label for="location" class="input_label">Город / Страна</label>
           <div class="input_errors">
             <div class="enter_value">Заполните поле</div>
-            <div class="change_value">Неверный город</div>
           </div>
         </div>
 
-        <div class="form_input">
+        <div class="form_input church">
           <input class="form_input__input" type="text" id="church" placeholder=" " required>
           <label for="church" class="input_label">Община/церковь</label>
           <div class="input_errors">
             <div class="enter_value">Заполните поле</div>
-            <div class="change_value">Неверные символы</div>
           </div>
         </div>
 
@@ -503,41 +499,41 @@
           </div>
         </div>
 
-        <div class="form_input form_accordion">
+        <div class="form_input form_accordion days">
           <div class="form_input_head">
             <div class="form_input_title" id="days_title">
               Дни моего участия:
             </div>
             <div class="form_input_active">
               <input type="checkbox" id="day22" class="participate_date">
-              <label for="day22">22 мая</label>
+              <label class="label_d22" for="day22">22 мая</label>
               <input type="checkbox" id="day23" class="participate_date">
-              <label for="day23">23 мая</label>
+              <label class="label_d23" for="day23">23 мая</label>
               <input type="checkbox" id="day24" class="participate_date">
-              <label for="day24">24 мая</label>
+              <label class="label_d24" for="day24">24 мая</label>
             </div>
           </div>
         </div>
 
-        <div class="form_input form_accordion serve">
+        <div class="form_input form_accordion service">
           <div class="form_input_head">
             <div class="form_input_title">
               Я хочу послужить на Ретрите:
             </div>
-            <div class="form_input_active serve">
-              <input type="radio" name="serve" id="serveYes" value="open">
-              <label for="serveYes">Да</label>
-              <input type="radio" name="serve" id="serveNo" value="close" checked>
-              <label for="serveNo">Нет</label>
+            <div class="form_input_active service">
+              <input type="radio" name="service" class="open" id="serveYes" value="open">
+              <label class="toggle_label_yes" for="serveYes">Да</label>
+              <input type="radio" name="service" class="close" id="serveNo" value="close" checked>
+              <label class="toggle_label_no" for="serveNo">Нет</label>
             </div>
           </div>
           <div class="form_input_body flex">
               <input type="radio" name="serving" id="asher" value="asher">
-              <label for="asher">Ашер</label>
+              <label class="label_asher" for="asher">Ашер</label>
               <input type="radio" name="serving" id="childServer" value="childServer">
-              <label for="childServer">Детский служитель</label>
+              <label class="label_childService" for="childServer">Детский служитель</label>
               <input type="radio" name="serving" id="registrator" value="registrator">
-              <label for="registrator">Регистрация</label>
+              <label class="label_registrator" for="registrator">Регистрация</label>
               <input type="text" placeholder="Ваш ответ" id="serveOpenAnswer">
           </div>
         </div>
@@ -548,30 +544,30 @@
               Со мной будут дети:
             </div>
             <div class="form_input_active">
-              <input type="radio" name="children" id="withChild" value="open">
-              <label for="withChild">Да</label>
-              <input type="radio" name="children" id="withoutChild" value="close" checked>
-              <label for="withoutChild">Нет</label>
+              <input type="radio" name="children" class="open" id="withChild" value="open">
+              <label class="toggle_label_yes" for="withChild">Да</label>
+              <input type="radio" name="children" class="close" id="withoutChild" value="close" checked>
+              <label class="toggle_label_no" for="withoutChild">Нет</label>
             </div>
           </div>
           <div class="form_input_body grid">
             <input type="checkbox" id="less5">
-            <label for="less5">до 5 лет</label>
+            <label class="less5_label" for="less5">до 5 лет</label>
             <div class="title_and_input">
-              <span>под присмотром родителей</span>
+              <span class="less5_span">под присмотром родителей</span>
             </div>
 
             <input type="checkbox" id="from5to7">
-            <label for="from5to7">5-7 лет</label>
+            <label class="from5to7_label" for="from5to7">5-7 лет</label>
             <div class="title_and_input">
-              <span>количество детей: </span>
+              <span class="from5to7_span">количество детей: </span>
               <input type="number" min="1" value="1" id="from5to7childrenCount">
             </div>
 
             <input type="checkbox" id="from8to12">
-            <label for="from8to12">8-12 лет</label>
+            <label class="from8to12_label" for="from8to12">8-12 лет</label>
             <div class="title_and_input">
-              <span>количество детей: </span>
+              <span class="from8to12_span">количество детей: </span>
               <input type="number" min="1" value="1" id="from8to12childrenCount">
             </div>
           </div>
