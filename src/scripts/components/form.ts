@@ -3,7 +3,6 @@
 import intlTelInput from "intl-tel-input";
 import { DataType } from "../types/data.type";
 import { Common } from "./common";
-import { FormElementsDataType } from "../types/formElements.type";
 import form from "../content/form.json"
 
 declare global {
@@ -53,6 +52,9 @@ export class Form extends Common {
     daysTitle = document.getElementById('days_title');
     
     
+    registrationPopupSending = document.getElementById('registration_form_popup_sending') as HTMLElement;
+    registrationPopupReady = document.getElementById('registration_form_popup_ready') as HTMLElement;
+
     submitFormButton: HTMLElement | null = document.getElementById('submitFormButton');
     titleElement : HTMLElement = document.querySelector('.registration_title') as HTMLElement;
     serviceOpenAnswer : HTMLInputElement = document.getElementById('serveOpenAnswer') as HTMLInputElement;
@@ -78,7 +80,6 @@ export class Form extends Common {
             element : document.querySelector('.form_input#phoneFormInput') as HTMLElement,
             data : form.phone
         },
-
         {
             element : document.querySelector('.form_input.days') as HTMLElement,
             data : form.days
@@ -90,13 +91,16 @@ export class Form extends Common {
         {
             element : document.querySelector('.form_input.children') as HTMLElement,
             data : form.children
-        }
+        },
+        {
+            element : this.registrationPopupSending,
+            data : form.sending
+        },
+        {
+            element : this.registrationPopupReady,
+            data : form.ready
+        },
     ];
-
-
-
-    registrationPopupSending = document.getElementById('registration_form_popup_sending');
-    registrationPopupReady = document.getElementById('registration_form_popup_ready');
 
     constructor() {
         super()

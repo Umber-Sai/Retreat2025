@@ -138,5 +138,21 @@
             "Ru" : "количество детей: ",
             "En" : "???"
         }
+    },
+    "sending" : {
+        "popup_title" : {
+            "Ru" : "Отправляем данные!",
+            "En" : "???"
+        }
+    },
+    "ready" : {
+        "popup_title" : {
+            "Ru" : "Спасибо, Ваши данные успешно отправлены!",
+            "En" : "Thank you, data was submitted successfully!"
+        },
+        "popup_text" : {
+            "Ru" : "Предлагаем вам подписаться на наш телеграмм канал, чтобы получать актуальную информацию о ретрите",
+            "En" : "We invite you to subscribe to our Telegram channel to receive the latest updates about the retreat."
+        }
     }
 }

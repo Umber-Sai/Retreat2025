@@ -1,4 +1,4 @@
-import { da } from "intl-tel-input/i18n";
+
 import { Common } from "./common";
 
 
@@ -24,6 +24,21 @@ export class Header extends Common {
         {
             element : document.querySelector('#menu .to_faq') as HTMLElement,
             data : {"En" : "F.A.Q.", "Ru" : "Частые вопросы"}
+        },
+
+        {
+            element : document.querySelector('.footer .footer_date') as HTMLElement,
+            data : {
+                "En" : "May 22-24, 2025",
+                "Ru" : "22-24 мая 2025"
+            }
+        },
+        {
+            element : document.querySelector('.footer .block_title') as HTMLElement,
+            data : {
+                "En" : "Contacts: ",
+                "Ru" : "Контакты"
+            }
         },
     ];
 
