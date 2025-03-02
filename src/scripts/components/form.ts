@@ -14,9 +14,10 @@ declare global {
 export class Form extends Common {
 
     isValid: boolean = true;
+    language : "Ru" | "En" = "Ru"
 
-    serviceAccordion = new ToggleAccordion('service');
-    childrenAccordion = new ToggleAccordion('children');
+    serviceAccordion = document.getElementById('serveYes') as HTMLInputElement;
+    childrenAccordion = document.getElementById('withChild') as HTMLInputElement;
 
     iti = intlTelInput(document.querySelector("#phone")!, {
         loadUtils: () => {
@@ -84,14 +85,14 @@ export class Form extends Common {
             element : document.querySelector('.form_input.days') as HTMLElement,
             data : form.days
         },
-        {
-            element : document.querySelector('.form_input.service') as HTMLElement,
-            data : form.service
-        },
-        {
-            element : document.querySelector('.form_input.children') as HTMLElement,
-            data : form.children
-        },
+        // {
+        //     element : document.querySelector('.form_input.service') as HTMLElement,
+        //     data : form.service
+        // },
+        // {
+        //     element : document.querySelector('.form_input.children') as HTMLElement,
+        //     data : form.children
+        // },
         {
             element : this.registrationPopupSending,
             data : form.sending
@@ -133,9 +134,16 @@ export class Form extends Common {
     }
 
     changeLanguage(lang: "Ru" | "En"): void {
+        this.language = lang
         this.titleElement.innerText = form.title[lang];
         this.submitFormButton!.innerText = form.button[lang];
         this.serviceOpenAnswer.placeholder = form.placeholder[lang];
+
+        (document.querySelector('.form_input.service') as HTMLElement).style.display = lang === "En" ? "none" : "grid";
+        (document.querySelector('.form_input.children') as HTMLElement).style.display = lang === "En" ? "none" : "grid";
+        (document.querySelector('#translateLang') as HTMLElement).style.display = lang === "Ru" ? "none" : "grid";
+
+
 
         this.elements.forEach(item => {
             Object.keys(item.data).forEach(key => {
@@ -187,22 +195,27 @@ export class Form extends Common {
                 (document.querySelector('input.participate_date#day24') as HTMLInputElement)!.checked,
             ],
             volonteer: '',
-            children : false
+            children : false,
+            translation : ''
         }
 
-        if (this.serviceAccordion.isOpen) {
-            const radioBtn = document.querySelector('input[name="serving"]:checked') as HTMLInputElement;
-            const textValue = (document.querySelector('input#serveOpenAnswer') as HTMLInputElement).value;
-            if(radioBtn) data.volonteer = radioBtn.value;
-            if(textValue) data.volonteer += ' | ' + textValue;
-        }
-
-        if(this.childrenAccordion.isOpen) {
-            data.children = [
-                (document.querySelector('input#less5') as HTMLInputElement)!.checked,
-                (document.querySelector('input#from5to7') as HTMLInputElement)!.checked ? (document.getElementById('from5to7childrenCount') as HTMLInputElement).value : '',
-                (document.querySelector('input#from8to12') as HTMLInputElement)!.checked ? (document.getElementById('from8to12childrenCount') as HTMLInputElement).value : '',
-            ]
+        if(this.language === "Ru") {
+            if (this.serviceAccordion && this.serviceAccordion.checked) {
+                const radioBtn = document.querySelector('input[name="serving"]:checked') as HTMLInputElement;
+                const textValue = (document.querySelector('input#serveOpenAnswer') as HTMLInputElement).value;
+                if(radioBtn) data.volonteer = radioBtn.value;
+                if(textValue) data.volonteer += ' | ' + textValue;
+            }
+    
+            if(this.serviceAccordion && this.childrenAccordion.checked) {
+                data.children = [
+                    (document.querySelector('input#less5') as HTMLInputElement)!.checked,
+                    (document.querySelector('input#from5to7') as HTMLInputElement)!.checked ? (document.getElementById('from5to7childrenCount') as HTMLInputElement).value : '',
+                    (document.querySelector('input#from8to12') as HTMLInputElement)!.checked ? (document.getElementById('from8to12childrenCount') as HTMLInputElement).value : '',
+                ]
+            }
+        } else {
+            data.translation = (document.querySelector('input[name="TLanguage"]:checked') as HTMLInputElement).value
         }
 
         this.sending(data)
@@ -214,6 +227,9 @@ export class Form extends Common {
         let body = `?firstName=${data.firstName}&lastName=${data.lastName}&location=${data.location}&church=${data.church}&phone=${data.phone}&22may=${data.participateDays[0]}&23may=${data.participateDays[1]}&24may=${data.participateDays[2]}&service=${data.volonteer}`
         if(data.children) {
             body = body + `&less5=${data.children[0]}&from5to7=${data.children[1]}&from8to12=${data.children[2]}`
+        }
+        if(data.translation) {
+            body = body + `&translation=${data.translation}`
         }
 
         this.registrationPopupSending?.classList.add('open');
@@ -247,33 +263,3 @@ export class Form extends Common {
 
 
 
-class ToggleAccordion {
-
-    isOpen : boolean = false;
-
-    private motherElement : HTMLElement;
-    private openBtn : HTMLInputElement;
-    private closeBtn : HTMLInputElement;
-
-    constructor (classsAccordion : string) {
-        this.motherElement = document.querySelector('.form_accordion.' + classsAccordion) as HTMLElement;
-        this.openBtn = this.motherElement.querySelector('input.open') as HTMLInputElement;
-        this.closeBtn = this.motherElement.querySelector('input.close') as HTMLInputElement;
-
-        if(this.openBtn.checked) this.accordionEngine(true);
-
-        this.openBtn.addEventListener('click', () => this.accordionEngine(true))
-        this.closeBtn.addEventListener('click', () => this.accordionEngine(false))
-    }
-
-    accordionEngine (status : boolean) : void {
-        if(status) {
-            this.motherElement.classList.add('open');
-            this.isOpen = true;
-        } else {
-            this.motherElement.classList.remove('open');
-            this.isOpen = false;
-        }
-    }
-
-}

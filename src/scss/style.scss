@@ -342,6 +342,21 @@
       flex-wrap: wrap;
 
 
+      input[type="radio"] {
+        display: none;
+        position: absolute;
+        z-index: -1;
+        &.open:checked + .form_accordion {
+          grid-template-rows: min-content 1fr;
+        }
+
+        &.open:not(:checked) + .form_accordion .form_input_active .toggle_label_no,
+        &.open:checked + .form_accordion .form_input_active .toggle_label_yes{
+          background-color: $second-color;
+          color: $bg-color;
+        }
+      }
+
 
       .form_input {
         max-width: 467px;
@@ -349,6 +364,9 @@
         flex: 1 1 calc(50% - 10px);
         position: relative;
 
+        &.big {
+          max-width: max-content;
+        }
 
         input,
         label,
@@ -502,9 +520,6 @@
             grid-template-rows: min-content 1fr;
           }
 
-          .form_input_head {
-          }
-
           .form_input_body {
             overflow: hidden;
           }
@@ -614,9 +629,14 @@
         }
       }
 
-      .btn {
-        margin-top: clamp(60px, 20vw, 90px);
+      .registration_form_action {
+        min-width: 100%;
+        text-align: center;
+        .btn {
+          margin-top: clamp(60px, 20vw, 90px);
+        }
       }
+      
     }
   }
 }

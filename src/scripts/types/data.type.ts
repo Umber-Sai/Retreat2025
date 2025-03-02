@@ -8,5 +8,6 @@ export type DataType = {
     volonteer : string,
     children : false | [
         boolean, string, string
-    ]
+    ],
+    translation : string
 }

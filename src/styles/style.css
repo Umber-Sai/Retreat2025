@@ -1892,11 +1892,27 @@ input[type=number]::-webkit-outer-spin-button {
   gap: 30px 20px;
   flex-wrap: wrap;
 }
+.registration .container .registration_form input[type=radio] {
+  display: none;
+  position: absolute;
+  z-index: -1;
+}
+.registration .container .registration_form input[type=radio].open:checked + .form_accordion {
+  grid-template-rows: min-content 1fr;
+}
+.registration .container .registration_form input[type=radio].open:not(:checked) + .form_accordion .form_input_active .toggle_label_no, .registration .container .registration_form input[type=radio].open:checked + .form_accordion .form_input_active .toggle_label_yes {
+  background-color: #EEAF00;
+  color: #121212;
+}
 .registration .container .registration_form .form_input {
   max-width: 467px;
   min-width: 280px;
   flex: 1 1 calc(50% - 10px);
   position: relative;
+}
+.registration .container .registration_form .form_input.big {
+  max-width: -moz-max-content;
+  max-width: max-content;
 }
 .registration .container .registration_form .form_input input,
 .registration .container .registration_form .form_input label,
@@ -2104,7 +2120,11 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 0 5px;
   box-sizing: border-box;
 }
-.registration .container .registration_form .btn {
+.registration .container .registration_form .registration_form_action {
+  min-width: 100%;
+  text-align: center;
+}
+.registration .container .registration_form .registration_form_action .btn {
   margin-top: clamp(60px, 20vw, 90px);
 }
 

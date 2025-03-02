@@ -515,15 +515,15 @@
           </div>
         </div>
 
+        <input type="radio" name="service" class="close" id="serveNo" value="close" checked>
+        <input type="radio" name="service" class="open" id="serveYes" value="open">
         <div class="form_input form_accordion service">
           <div class="form_input_head">
             <div class="form_input_title">
               Я хочу послужить на Ретрите:
             </div>
             <div class="form_input_active service">
-              <input type="radio" name="service" class="open" id="serveYes" value="open">
               <label class="toggle_label_yes" for="serveYes">Да</label>
-              <input type="radio" name="service" class="close" id="serveNo" value="close" checked>
               <label class="toggle_label_no" for="serveNo">Нет</label>
             </div>
           </div>
@@ -537,16 +537,16 @@
               <input type="text" placeholder="Ваш ответ" id="serveOpenAnswer">
           </div>
         </div>
-
+        
+        <input type="radio" name="children" class="close" id="withoutChild" value="close" checked>
+        <input type="radio" name="children" class="open" id="withChild" value="open">
         <div class="form_input form_accordion children">
           <div class="form_input_head">
             <div class="form_input_title">
               Со мной будут дети:
             </div>
             <div class="form_input_active">
-              <input type="radio" name="children" class="open" id="withChild" value="open">
               <label class="toggle_label_yes" for="withChild">Да</label>
-              <input type="radio" name="children" class="close" id="withoutChild" value="close" checked>
               <label class="toggle_label_no" for="withoutChild">Нет</label>
             </div>
           </div>
@@ -573,7 +573,23 @@
           </div>
         </div>
 
-        <button type="button" class="btn" id="submitFormButton">Отправить</button>
+        <div class="form_input form_accordion big" id="translateLang" style="display: none;">
+          <div class="form_input_head">
+            <div class="form_input_title">
+              Choose the language of translation:
+            </div>
+            <div class="form_input_active">
+              <input type="radio" name="TLanguage" id="english" value="english" checked>
+              <label class="label_asher" for="english">English</label>
+              <input type="radio" name="TLanguage" id="hebrew" value="hebrew">
+              <label class="label_asher" for="hebrew">Hebrew</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="registration_form_action">
+          <button type="button" class="btn" id="submitFormButton">Отправить</button>
+        </div>
 
         <div class="registration_form_popup_sending" id="registration_form_popup_sending">
           <div class="popup_title">Отправляем данные!</div>
