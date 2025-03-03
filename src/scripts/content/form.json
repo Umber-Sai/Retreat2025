@@ -43,7 +43,7 @@
     },
     "church": {
         "input_label": {
-            "Ru": "Община / Церков",
+            "Ru": "Община / Церковь",
             "En": "Community / Church"
         },
         "enter_value": {
@@ -142,7 +142,7 @@
     "sending" : {
         "popup_title" : {
             "Ru" : "Отправляем данные!",
-            "En" : "???"
+            "En" : "Waiting..."
         }
     },
     "ready" : {
