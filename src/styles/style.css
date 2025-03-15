@@ -1694,7 +1694,7 @@ input[type=number]::-webkit-outer-spin-button {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("../static/img/main-img.jpg");
+  background-image: url("../static/img/main-img.webp");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1759,6 +1759,10 @@ input[type=number]::-webkit-outer-spin-button {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 50px;
+}
+.speakers .container .speakers_cards .speaker_card:last-child {
+  justify-self: center;
+  grid-column: 1/-1; /* Растягиваем элемент на всю строку */
 }
 .speakers .container .speakers_cards .speaker_card {
   max-width: 580px;

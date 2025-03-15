@@ -85,7 +85,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('../static/img/main-img.jpg');
+    background-image: url('../static/img/main-img.webp');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -173,6 +173,11 @@
       display: grid;
       grid-template-columns: 1fr;
       row-gap: 50px;
+
+      .speaker_card:last-child {
+        justify-self: center;
+        grid-column: 1 / -1; /* Растягиваем элемент на всю строку */
+      }
 
       .speaker_card {
         max-width: 580px;
