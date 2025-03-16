@@ -1,24 +1,28 @@
 
 import { Common } from "./common";
-import { title, text} from "../content/about.json"
 
 
 
 export class About extends Common {
-    elements: { element: HTMLElement; data:  {"Ru" : string, "En" : string}; }[] = [
-        {
-            element : document.querySelector('.about_title') as HTMLElement,
-            data : title
-        },
-        {
-            element : document.querySelector('.about_text') as HTMLElement,
-            data : text
-        },
-    ];
+    elements: { element: HTMLElement; data:  {"Ru" : string, "En" : string}; }[] = [];
+    jsonPath: string = 'static/content/about.json';
 
     constructor () {
         super();
-        this.changeLanguage("Ru")
+        this.loadData(this.jsonPath)
+            .then(data => {
+                this.elements = [
+                    {
+                        element : document.querySelector('.about_title') as HTMLElement,
+                        data : data.title
+                    },
+                    {
+                        element : document.querySelector('.about_text') as HTMLElement,
+                        data : data.text
+                    },
+                ]
+                this.changeLanguage("Ru");
+            })
     }
 
     fillElement(element: HTMLElement, data: {"Ru" : string, "En" : string}, language: "Ru" | "En"): void {

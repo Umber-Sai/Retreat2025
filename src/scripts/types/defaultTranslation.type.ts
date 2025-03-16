@@ -1,0 +1,1 @@
+export type DefaultTranslationType = {"Ru" : string, "En" : string}

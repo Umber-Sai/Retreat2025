@@ -1,7 +1,13 @@
 export abstract class Common {
     abstract elements : {element : HTMLElement, data : unknown}[];
+    abstract jsonPath : string;
+
     abstract fillElement (element : HTMLElement, data : unknown, language : 'Ru' | 'En'): void;
     abstract changeLanguage(lang : 'Ru' | 'En') : void;
+
+    async loadData (jsonPath : string) : Promise<any> {
+        return await fetch(jsonPath).then(resp => resp.json());
+    }
 }
 
 export abstract class Dynamic extends Common{

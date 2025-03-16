@@ -3,7 +3,7 @@
 import intlTelInput from "intl-tel-input";
 import { DataType } from "../types/data.type";
 import { Common } from "./common";
-import form from "../content/form.json"
+import { DefaultTranslationType } from "../types/defaultTranslation.type";
 
 declare global {
     interface Window {
@@ -59,52 +59,63 @@ export class Form extends Common {
     submitFormButton: HTMLElement | null = document.getElementById('submitFormButton');
     titleElement : HTMLElement = document.querySelector('.registration_title') as HTMLElement;
     serviceOpenAnswer : HTMLInputElement = document.getElementById('serveOpenAnswer') as HTMLInputElement;
-    elements: { element: HTMLElement; data: any; }[] =
-     [
-        {
-            element : document.querySelector('.form_input.firstName') as HTMLElement,
-            data : form.firstName
-        },
-        {
-            element : document.querySelector('.form_input.lastName') as HTMLElement,
-            data : form.lastName
-        },
-        {
-            element : document.querySelector('.form_input.location') as HTMLElement,
-            data : form.location
-        },
-        {
-            element : document.querySelector('.form_input.church') as HTMLElement,
-            data : form.church
-        },
-        {
-            element : document.querySelector('.form_input#phoneFormInput') as HTMLElement,
-            data : form.phone
-        },
-        {
-            element : document.querySelector('.form_input.days') as HTMLElement,
-            data : form.days
-        },
-        // {
-        //     element : document.querySelector('.form_input.service') as HTMLElement,
-        //     data : form.service
-        // },
-        // {
-        //     element : document.querySelector('.form_input.children') as HTMLElement,
-        //     data : form.children
-        // },
-        {
-            element : this.registrationPopupSending,
-            data : form.sending
-        },
-        {
-            element : this.registrationPopupReady,
-            data : form.ready
-        },
-    ];
+    elements: { element: HTMLElement; data: any; }[] = [];
+    tTitle : DefaultTranslationType = {} as DefaultTranslationType;
+    tButton : DefaultTranslationType = {} as DefaultTranslationType;
+    tPlaceholder : DefaultTranslationType = {} as DefaultTranslationType;
+    jsonPath: string = 'static/content/form.json';
 
     constructor() {
         super()
+
+        this.loadData(this.jsonPath)
+            .then(data => {
+                this.tButton = data.button;
+                this.tTitle = data.title;
+                this.tPlaceholder = data.placeholder;
+                this.elements = [
+                    {
+                        element : document.querySelector('.form_input.firstName') as HTMLElement,
+                        data : data.firstName
+                    },
+                    {
+                        element : document.querySelector('.form_input.lastName') as HTMLElement,
+                        data : data.lastName
+                    },
+                    {
+                        element : document.querySelector('.form_input.location') as HTMLElement,
+                        data : data.location
+                    },
+                    {
+                        element : document.querySelector('.form_input.church') as HTMLElement,
+                        data : data.church
+                    },
+                    {
+                        element : document.querySelector('.form_input#phoneFormInput') as HTMLElement,
+                        data : data.phone
+                    },
+                    {
+                        element : document.querySelector('.form_input.days') as HTMLElement,
+                        data : data.days
+                    },
+                    // {
+                    //     element : document.querySelector('.form_input.service') as HTMLElement,
+                    //     data : data.service
+                    // },
+                    // {
+                    //     element : document.querySelector('.form_input.children') as HTMLElement,
+                    //     data : data.children
+                    // },
+                    {
+                        element : this.registrationPopupSending,
+                        data : data.sending
+                    },
+                    {
+                        element : this.registrationPopupReady,
+                        data : data.ready
+                    },
+                ]
+            })
 
         document.getElementById('close_popup')!.onclick = () => {
             this.registrationPopupReady?.classList.remove('open');
@@ -135,9 +146,9 @@ export class Form extends Common {
 
     changeLanguage(lang: "Ru" | "En"): void {
         this.language = lang
-        this.titleElement.innerText = form.title[lang];
-        this.submitFormButton!.innerText = form.button[lang];
-        this.serviceOpenAnswer.placeholder = form.placeholder[lang];
+        this.titleElement.innerText = this.tTitle[lang];
+        this.submitFormButton!.innerText = this.tButton[lang];
+        this.serviceOpenAnswer.placeholder = this.tPlaceholder[lang];
 
         (document.querySelector('.form_input.service') as HTMLElement).style.display = lang === "En" ? "none" : "grid";
         (document.querySelector('.form_input.children') as HTMLElement).style.display = lang === "En" ? "none" : "grid";

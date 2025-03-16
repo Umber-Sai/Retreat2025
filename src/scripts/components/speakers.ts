@@ -1,5 +1,4 @@
 import { Dynamic } from "./common";
-import {speakers, title}  from "../content/speakers.json";
 import { SpeakersType } from "../types/speakers.type";
 
 
@@ -10,16 +9,24 @@ export class Speakers extends Dynamic {
     speakersMotherElement : HTMLElement | null = document.getElementById('speakersCards');
     elements : {element : HTMLElement, data : SpeakersType}[] = [];
     titleElement : HTMLElement = document.getElementById('speakers_title') as HTMLElement
+    speakers : SpeakersType[] = [];
+    title : {"Ru" : string, "En" : string} = {} as {"Ru" : string, "En" : string}
+    jsonPath: string = './static/content/speakers.json';
 
     constructor(langauge : 'Ru' | 'En') {
         super();
         this.language = langauge;
-        this.createElenments();
+        this.loadData(this.jsonPath)
+            .then(data => {
+                this.speakers = data.speakers;
+                this.title = data.title;
+                this.createElenments();
+            })
     }
 
     async createElenments(): Promise<void> {
         const template : string = await this.getTemplate('./templates/speaker-card.html');
-        speakers.forEach((item : SpeakersType) => {
+        this.speakers.forEach((item : SpeakersType) => {
             const element = document.createElement('div');
             element.innerHTML = template;
             element.querySelector('.card_img img')?.setAttribute('src', './static/img/speakers/' + item.image);
@@ -40,7 +47,7 @@ export class Speakers extends Dynamic {
     }
 
     changeLanguage(lang: "Ru" | "En"): void {
-        this.titleElement.innerText = title[lang];
+        this.titleElement.innerText = this.title[lang];
         this.elements.forEach(props => {
             this.fillElement(props.element, props.data, lang)
         })

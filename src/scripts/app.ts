@@ -1,6 +1,4 @@
 import { Form } from "./components/form";
-
-
 import { Header } from "./components/header";
 import { Scroller } from "./components/scroller";
 import { Faq } from "./components/faq";

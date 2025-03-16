@@ -1,6 +1,6 @@
 import { Dynamic } from "./common";
-import faq from '../content/faq.json';
 import { FaqType } from "../types/faq.type";
+import { DefaultTranslationType } from "../types/defaultTranslation.type";
 
 
 export class Faq extends Dynamic {
@@ -10,17 +10,25 @@ export class Faq extends Dynamic {
     motherElement : HTMLElement | null = document.getElementById('faq_accordion');
     titleElement : HTMLElement = document.getElementById('faq_title') as HTMLElement;
     elements : {element : HTMLElement, data : FaqType}[] = [];
+    jsonPath: string = 'static/content/faq.json';
+    faq : FaqType[] = [];
+    tTitle : DefaultTranslationType = {} as DefaultTranslationType
 
     constructor (langauge : 'Ru' | 'En') {
         super();
         this.language = langauge;
-        this.titleElement.innerText = faq.title[this.language];
-        this.createElenments();
+        this,this.loadData(this.jsonPath)
+            .then(data => {
+                this.faq = data.faq;
+                this.tTitle = data.title
+                this.titleElement.innerText = this.tTitle[this.language];
+                this.createElenments();
+            })
     }
 
     async createElenments(): Promise<void> {
         const template : string = await this.getTemplate('./templates/accordion.html');
-        faq.faq.forEach((data: FaqType) => {
+        this.faq.forEach((data: FaqType) => {
             const element: HTMLElement = document.createElement('div');
             element.innerHTML = template;
 
@@ -46,7 +54,7 @@ export class Faq extends Dynamic {
     }
 
     changeLanguage(lang : 'Ru' | 'En') : void {
-        this.titleElement.innerText = faq.title[lang];
+        this.titleElement.innerText = this.tTitle[lang];
         this.elements.forEach(props => {
             this.fillElement(props.element, props.data, lang)
         })
