@@ -42,7 +42,7 @@ export class Header extends Common {
         },
     ];
 
-    constructor() {
+    constructor(lang : 'Ru' | 'En') {
         super()
         if(!this.header) {
             console.error('header not found');
@@ -67,7 +67,7 @@ export class Header extends Common {
 
         window.addEventListener('scroll', () => requestAnimationFrame(handleScroll));
 
-        this.changeLanguage("Ru")
+        this.changeLanguage(lang)
     }
 
     closeMenu () {

@@ -6,14 +6,16 @@ import { DefaultTranslationType } from "../types/defaultTranslation.type";
 
 export class Main extends Common {
 
+    lang : 'Ru' | 'En';
     elements: { element: HTMLElement; data: {"Ru" : string, "En" : string}; }[] = [];
 
     jsonPath: string = 'static/content/main.json';
 
 
 
-    constructor () {
+    constructor (lang : 'Ru' | 'En') {
         super();
+        this.lang = lang
         this.loadData(this.jsonPath)
             .then(data => {
                 this.elements = [
@@ -34,7 +36,7 @@ export class Main extends Common {
                         data : data.button
                     },
                 ]
-                this.changeLanguage('Ru');
+                this.changeLanguage(lang);
             })
     }
 

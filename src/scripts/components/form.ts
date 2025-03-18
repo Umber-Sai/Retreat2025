@@ -14,7 +14,7 @@ declare global {
 export class Form extends Common {
 
     isValid: boolean = true;
-    language : "Ru" | "En" = "Ru"
+    language : "Ru" | "En";
 
     serviceAccordion = document.getElementById('serveYes') as HTMLInputElement;
     childrenAccordion = document.getElementById('withChild') as HTMLInputElement;
@@ -65,9 +65,9 @@ export class Form extends Common {
     tPlaceholder : DefaultTranslationType = {} as DefaultTranslationType;
     jsonPath: string = 'static/content/form.json';
 
-    constructor() {
+    constructor(lang : 'Ru' | 'En') {
         super()
-
+        this.language = lang
         this.loadData(this.jsonPath)
             .then(data => {
                 this.tButton = data.button;
@@ -115,6 +115,7 @@ export class Form extends Common {
                         data : data.ready
                     },
                 ]
+                this.changeLanguage(lang)
             })
 
         document.getElementById('close_popup')!.onclick = () => {

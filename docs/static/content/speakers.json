@@ -4,6 +4,11 @@
         "En" : "speakers"
     },
 
+    "button" : {
+        "Ru" : "Регистрация пастырей",
+        "En" : "???"
+    },
+
     "speakers" : [
         {
             "id" : 1,
@@ -19,6 +24,18 @@
         },
         {
             "id" : 2,
+            "image" : "andrey.webp",
+            "Ru" : {
+                "name" : "Андрей Шаповал",
+               "text" : "Пастор и евангелист, основатель служения Flame of Fire. Сакраменто, США."
+           },
+            "En" : {
+               "name" : "Andrey Shapoval",
+               "text" : "Pastor-evangelist, founder of the Flame of Fire Ministry. Sacramento, USA."
+           }
+        },
+        {
+            "id" : 3,
             "image" : "rodion_samoylovich.webp",
             "Ru" : {
                 "name" : "Родион Самойлович",
@@ -27,18 +44,6 @@
             "En" : {
                "name" : "Rodion Samoylovich",
                "text" : "Rabbi of Jewish Messianic Congregation in Cologne, Germany."
-           }
-        },
-        {
-            "id" : 3,
-            "image" : "andrey.webp",
-            "Ru" : {
-                "name" : "Андрей Шаповал",
-               "text" : "Пастор и евангелист, основатель служения Flame of Fire."
-           },
-            "En" : {
-               "name" : "Andrey Shapoval",
-               "text" : "Pastor-evangelist, founder of the Flame of Fire Ministry."
            }
         }
     ]

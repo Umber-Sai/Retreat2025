@@ -15,7 +15,7 @@ export class Conditions extends Common {
     tTitle : DefaultTranslationType = {} as DefaultTranslationType
     tButton : DefaultTranslationType = {} as DefaultTranslationType
 
-    constructor () {
+    constructor (lang : 'Ru' | 'En') {
         super();
         this.loadData(this.jsonPath)
             .then(data => {
@@ -39,7 +39,7 @@ export class Conditions extends Common {
                         data : data.conditions[3]
                     }
                 ]
-                this.changeLanguage("Ru")
+                this.changeLanguage(lang)
             })
     }
 

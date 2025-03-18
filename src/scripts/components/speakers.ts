@@ -1,5 +1,6 @@
 import { Dynamic } from "./common";
 import { SpeakersType } from "../types/speakers.type";
+import { DefaultTranslationType } from "../types/defaultTranslation.type";
 
 
 
@@ -8,9 +9,11 @@ export class Speakers extends Dynamic {
     language : 'Ru' | 'En';
     speakersMotherElement : HTMLElement | null = document.getElementById('speakersCards');
     elements : {element : HTMLElement, data : SpeakersType}[] = [];
-    titleElement : HTMLElement = document.getElementById('speakers_title') as HTMLElement
+    titleElement : HTMLElement = document.getElementById('speakers_title') as HTMLElement;
+    buttonElement : HTMLElement = document.querySelector('.speakers .speakers_action .btn') as HTMLElement;
     speakers : SpeakersType[] = [];
     title : {"Ru" : string, "En" : string} = {} as {"Ru" : string, "En" : string}
+    button : DefaultTranslationType = {} as DefaultTranslationType
     jsonPath: string = './static/content/speakers.json';
 
     constructor(langauge : 'Ru' | 'En') {
@@ -20,7 +23,9 @@ export class Speakers extends Dynamic {
             .then(data => {
                 this.speakers = data.speakers;
                 this.title = data.title;
-                this.createElenments();
+                this.button = data.button;
+                this.createElenments()
+                    .then(() => {this.changeLanguage(this.language)})
             })
     }
 
@@ -30,7 +35,7 @@ export class Speakers extends Dynamic {
             const element = document.createElement('div');
             element.innerHTML = template;
             element.querySelector('.card_img img')?.setAttribute('src', './static/img/speakers/' + item.image);
-            this.fillElement(element, item, this.language);
+            // this.fillElement(element, item, this.language);
 
             this.elements.push({element : element.firstElementChild! as HTMLElement, data : item});
 
@@ -48,6 +53,7 @@ export class Speakers extends Dynamic {
 
     changeLanguage(lang: "Ru" | "En"): void {
         this.titleElement.innerText = this.title[lang];
+        this.buttonElement.innerText = this.button[lang];
         this.elements.forEach(props => {
             this.fillElement(props.element, props.data, lang)
         })

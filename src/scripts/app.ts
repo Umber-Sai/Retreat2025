@@ -10,29 +10,42 @@ import { Conditions } from "./components/conditions";
 
 class App {
 
-    language : 'Ru' | 'En' = 'Ru';
+    language : 'Ru' | 'En' = window.location.hash.split('/')?.[1] as 'Ru' | 'En';
     langBtn = document.querySelectorAll('input[name=language]') as NodeListOf<HTMLInputElement>;
 
-    classes = [
-        new Header(),
-        new Main(),
-        new About(),
-        new Speakers(this.language),
-        new Conditions(),
-        new Faq(this.language),
-        new Form()
-    ]
+    classes: any[] = [];
 
     constructor() {
+        if(!this.language || (this.language !== "Ru" && this.language !== "En")) {
+            window.location.href = '#/Ru';
+            this.language = "Ru"
+        } 
+
+        this.classes = [
+            new Header(this.language),
+            new Main(this.language),
+            new About(this.language),
+            new Speakers(this.language),
+            new Conditions(this.language),
+            new Faq(this.language),
+            new Form(this.language)
+        ];
+
+        document.getElementById(this.language)?.setAttribute('checked', 'checked')
+
+        window.addEventListener('popstate', () => {
+            this.changeLanguage();
+        });
+
         new Scroller();
-        this.languageBtnListener();   
+        this.languageBtnListener();
     }
 
     languageBtnListener () {
         this.langBtn.forEach((btn : HTMLInputElement) => {
             btn.onclick = () => {
                 this.language = btn.value as 'Ru' | 'En';
-                this.changeLanguage();
+                window.location.href = '#/' + this.language
             }
         });
     }
@@ -43,12 +56,6 @@ class App {
         });
     }
 }
-
-
-    
-
-   
-
 
 
 new App();

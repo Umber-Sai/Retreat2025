@@ -7,7 +7,7 @@ export class About extends Common {
     elements: { element: HTMLElement; data:  {"Ru" : string, "En" : string}; }[] = [];
     jsonPath: string = 'static/content/about.json';
 
-    constructor () {
+    constructor (lang : 'Ru' | 'En') {
         super();
         this.loadData(this.jsonPath)
             .then(data => {
@@ -21,7 +21,7 @@ export class About extends Common {
                         data : data.text
                     },
                 ]
-                this.changeLanguage("Ru");
+                this.changeLanguage(lang);
             })
     }
 
