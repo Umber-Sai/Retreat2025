@@ -52,11 +52,16 @@ input[type='number']::-webkit-outer-spin-button {
     overflow: hidden;
 
     box-shadow: inset 0 0 0px 1px #fff;
-    transition: all .1s ease-out;
+    transition: all .3s cubic-bezier(0.470, 0.255, 0.000, 1.000); 
+
+    &.t_size20 {
+        font-size: 20px;
+    }
 
 
     &:hover {
         box-shadow: inset 0 0 0px 1px $second-color;
+        transform: scale(1.05);
         &::before {
             transform: translate(-50%, -50%) rotate(-45deg) skew(20deg, 20deg);
         }
@@ -71,6 +76,8 @@ input[type='number']::-webkit-outer-spin-button {
         width: 80%;
         aspect-ratio: 1;
         transform: translate(-50%, -150%) rotate(-45deg) skew(20deg, 20deg);
+
+        box-shadow: 0 0 5px 20px $second-color;
         z-index: -1;
         background-color: $second-color;
 

@@ -1292,10 +1292,14 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: transparent;
   overflow: hidden;
   box-shadow: inset 0 0 0px 1px #fff;
-  transition: all 0.1s ease-out;
+  transition: all 0.3s cubic-bezier(0.47, 0.255, 0, 1);
+}
+.btn.t_size20 {
+  font-size: 20px;
 }
 .btn:hover {
   box-shadow: inset 0 0 0px 1px #EEAF00;
+  transform: scale(1.05);
 }
 .btn:hover::before {
   transform: translate(-50%, -50%) rotate(-45deg) skew(20deg, 20deg);
@@ -1309,6 +1313,7 @@ input[type=number]::-webkit-outer-spin-button {
   width: 80%;
   aspect-ratio: 1;
   transform: translate(-50%, -150%) rotate(-45deg) skew(20deg, 20deg);
+  box-shadow: 0 0 5px 20px #EEAF00;
   z-index: -1;
   background-color: #EEAF00;
   transition: all 0.3s ease-out;
@@ -1431,6 +1436,11 @@ input[type=number]::-webkit-outer-spin-button {
   cursor: pointer;
   color: #fff;
   text-decoration: none;
+  transition: all 0.2s;
+}
+.menu_burger .menu_popup #menu ul a:hover {
+  color: #EEAF00;
+  transform: scale(1.1);
 }
 .menu_burger .menu_popup #menu .menu_addition {
   border-top: 1px solid #fff;
@@ -1448,6 +1458,14 @@ input[type=number]::-webkit-outer-spin-button {
   aspect-ratio: 1;
   cursor: pointer;
   font-size: 0px;
+  transition: all 0.2s;
+}
+.menu_burger .menu_popup #menu .menu_addition a:hover {
+  color: #EEAF00;
+  transform: scale(1.1);
+}
+.menu_burger .menu_popup #menu .menu_addition a:hover svg path {
+  fill: #EEAF00;
 }
 .menu_burger .menu_popup #menu .menu_addition a svg {
   width: 100%;

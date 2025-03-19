@@ -103,6 +103,14 @@
 
           color: $text-color;
           text-decoration: none;
+
+          transition: all .2s;
+
+          &:hover {
+            color: $second-color;
+            transform: scale(1.1);
+
+          }
         }
       }
       .menu_addition {
@@ -114,13 +122,25 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
         width: 180px;
-
+       
         a {
           width: 100%;
           display: block;
           aspect-ratio: 1;
           cursor: pointer;
           font-size: 0px;
+          transition: all .2s;
+
+
+          &:hover {
+            color: $second-color;
+            transform: scale(1.1);
+
+            svg path {
+              fill: $second-color;
+            }
+          }
+
           svg {
             // aspect-ratio: 1;
             width: 100%;

@@ -26,7 +26,10 @@ export class Speakers extends Dynamic {
                 this.button = data.button;
                 this.createElenments()
                     .then(() => {this.changeLanguage(this.language)})
-            })
+            });
+        this.buttonElement.onclick = () => {
+            window.open('https://docs.google.com/forms/d/1AlNRur76vzma2NtdZlzOao_dSHxVPfm2IubL7MQ5qJM/preview', '_blank');
+        }
     }
 
     async createElenments(): Promise<void> {
