@@ -219,7 +219,7 @@ export class Form extends Common {
                 if(textValue) data.volonteer += ' | ' + textValue;
             }
     
-            if(this.serviceAccordion && this.childrenAccordion.checked) {
+            if(this.childrenAccordion && this.childrenAccordion.checked) {
                 data.children = [
                     (document.querySelector('input#less5') as HTMLInputElement)!.checked,
                     (document.querySelector('input#from5to7') as HTMLInputElement)!.checked ? (document.getElementById('from5to7childrenCount') as HTMLInputElement).value : '',
