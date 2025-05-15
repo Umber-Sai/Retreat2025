@@ -6,6 +6,7 @@ import { Speakers } from "./components/speakers";
 import { Main } from "./components/main";
 import { About } from "./components/about";
 import { Conditions } from "./components/conditions";
+import { Syllabus } from "./components/sylabus";
 
 
 class App {
@@ -26,6 +27,7 @@ class App {
             new Main(this.language),
             new About(this.language),
             new Speakers(this.language),
+            new Syllabus(this.language),
             new Conditions(this.language),
             new Faq(this.language),
             new Form(this.language)

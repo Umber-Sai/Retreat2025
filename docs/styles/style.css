@@ -1325,6 +1325,16 @@ input[type=number]::-webkit-outer-spin-button {
   text-transform: uppercase;
 }
 
+.title_mini {
+  text-transform: uppercase;
+  font-size: clamp(25px, 3vw, 35px);
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.title_mini span {
+  color: #EEAF00;
+}
+
 @font-face {
   font-family: "OpenSans";
   src: url("../static/fonts/OpenSans-CondBold.ttf");
@@ -1503,6 +1513,20 @@ input[type=number]::-webkit-outer-spin-button {
 @media screen and (min-width: 650px) {
   body .conditions .container .conditions_cards {
     grid-template-columns: repeat(2, minmax(280px, 400px));
+  }
+}
+@media screen and (max-width: 920px) {
+  body .sylabus .container .sylabus_days {
+    margin: 0 auto;
+    max-width: 700px;
+    justify-content: center;
+    gap: 30px;
+  }
+}
+@media screen and (max-width: 470px) {
+  body .sylabus .container .sylabus_days {
+    align-items: start;
+    flex-direction: column;
   }
 }
 #days_title {
@@ -1803,6 +1827,25 @@ input[type=number]::-webkit-outer-spin-button {
   width: 100%;
   text-align: center;
   margin-top: 100px;
+}
+
+.sylabus {
+  padding: 30px 0 60px;
+}
+.sylabus .container .sylabus_title {
+  margin-bottom: 50px;
+}
+.sylabus .container .sylabus_days {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.sylabus .container .sylabus_days .sylabus_day .day_title {
+  margin-bottom: 14px;
+}
+.sylabus .container .sylabus_days .sylabus_day .day_list .day_item span {
+  font-weight: 700;
 }
 
 .conditions {

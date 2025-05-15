@@ -15,6 +15,7 @@
             }
         }
     }
+   
 }
 
 @media screen and (min-width : 650px) {
@@ -23,6 +24,31 @@
             .conditions_cards {
                 grid-template-columns: repeat(2, minmax(280px, 400px));
             }
+        }
+    }
+}
+
+
+@media screen and (max-width : 920px) {
+    body .sylabus {
+        .container {
+          .sylabus_days {
+            margin: 0 auto;
+            max-width: 700px;
+            justify-content: center;
+            gap: 30px;
+          }
+        }
+    }
+}
+
+@media screen and (max-width : 470px) {
+    body .sylabus {
+        .container {
+          .sylabus_days {
+            align-items: start;
+            flex-direction: column;
+          }
         }
     }
 }
