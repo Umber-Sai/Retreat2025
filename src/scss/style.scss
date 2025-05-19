@@ -219,7 +219,8 @@
     .sylabus_days {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 35px;
       flex-wrap: wrap;
       .sylabus_day {
         .day_title {

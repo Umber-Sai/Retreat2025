@@ -1,0 +1,65 @@
+{
+    "title" : {
+        "Ru" : "Расписание сессий",
+        "En" : "Session Schedule"
+    },
+
+    "days" : [
+        {
+            "title" : {
+                "Ru" : "ЧЕТВЕРГ <span>/</span> 22 мая",
+                "En" : "THURSDAY <span>/</span> MAY 22"
+            },
+            "activities" : {
+                "Ru" : [
+                    "<span>12:00 - 15:00</span> - 1 сессия",
+                    "<span>15:00 - 17:00</span> - Перерыв",
+                    "<span>17:00 - 21:00</span> - 2 сессия"
+                ],
+                "En" : [
+                    "<span>12 pm - 3 pm</span> - Session 1",
+                    "<span>3 pm - 5 pm</span> -  Break",
+                    "<span>5 pm -  9 pm</span> - Session 2"
+                ]
+            }
+        },
+
+        {
+            "title" : {
+                "Ru" : "ПЯТНИЦА <span>/</span> 23 мая",
+                "En" : "FRIDAY <span>/</span> MAY 23"
+            },
+            "activities" : {
+                "Ru" : [
+                    "<span>10:30 - 14:30</span> - 1 сессия",
+                    "<span>14:30 - 17:00</span> - Перерыв",
+                    "<span>17:00 ~ 20:00</span> - Общий Шабат"
+                ],
+                "En" : [
+                    "<span>10:30 am - 2:30 pm</span> - Session 1",
+                    "<span>2:30 pm - 5:00 pm</span> - Break",
+                    "<span>5 pm ~ 8 pm</span> - Shabbat service "
+                ]
+            }
+        },
+
+        {
+            "title" : {
+                "Ru" : "СУББОТА <span>/</span> 24 мая",
+                "En" : "SATURDAY <span>/</span> MAY 24"
+            },
+            "activities" : {
+                "Ru" : [
+                    "<span>10:30 - 14:00</span> - 1 сессия",
+                    "<span>14:00 - 15:30</span> - Перерыв",
+                    "<span>15:30 ~ 19:00</span> - 2 сессия + причастие"
+                ],
+                "En" : [
+                    "<span>10:30 am - 2:30 pm</span> - Session 1",
+                    "<span>2:30 pm - 3:30 pm</span> - Break",
+                    "<span>3:30 pm ~ 8:00 pm</span> - Session 2 + Communion "
+                ]
+            }
+        }
+    ]
+}
